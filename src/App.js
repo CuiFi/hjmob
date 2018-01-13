@@ -1,15 +1,15 @@
 //noinspection JSUnresolvedVariable
 import React, { Component } from 'react';
-//noinspection JSUnresolvedVariable
+import HeaderPart from './commpent/HeaderPart';
+import SliderBanner from './commpent/SliderBanner';
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <HeaderPart />
+	      <SliderBanner />
       </div>
     );
   }
