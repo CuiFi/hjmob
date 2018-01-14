@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import {Row, Col,Card} from 'antd';
 import anli_index from '../img/anli_index.png';
-const { Meta } = Card;
 
 class FourPart extends Component {
 	render() {
 		return (
 			<div style={{paddingLeft:'10px',paddingRight:'10px'}}>
-				<Row gutter={10}>
+				<Row style={{marginBottom:'10px'}} gutter={10}>
 					<Col span={12}>
 						<Card
 							hoverable
@@ -25,7 +24,7 @@ class FourPart extends Component {
 						</Card>
 					</Col>
 				</Row>
-				<Row gutter={10}>
+				<Row style={{marginBottom:'10px'}} gutter={10}>
 					<Col span={12}>
 						<Card
 							hoverable
