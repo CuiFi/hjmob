@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Carousel,Layout} from 'antd';
 const {Content } = Layout;
 
-// 只供内部使用的组件(ES6语法的类组件)
 
 class SliderBanner extends Component {
 	constructor(props) {
@@ -28,7 +27,7 @@ class SliderBanner extends Component {
 			))
 			: '没有加载到任何数据';
 		return (
-      <Content style={{marginTop:'64px'}}>
+      <Content style={{paddingTop:'64px'}}>
         <Carousel autoplay>
           <div>{bannerList[0]}</div>
           <div>{bannerList[1]}</div>

@@ -2,6 +2,35 @@ img{
   max-width: 100%;
 }
 
+.NineIcon{
+  padding-left:10px;
+  padding-right:10px;
+}
+.NineIcon p{
+  margin-bottom: 0;
+  font-size: 12px;
+}
+.NineIcon img{
+  width: 58px;
+}
+
+.submit-form{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.submit-form .ant-input{
+  -webkit-border-radius:0;
+  -moz-border-radius:0;
+  border-radius:0;
+}
+.submit-form .ant-btn{
+  -webkit-border-radius:0;
+  -moz-border-radius:0;
+  border-radius:0;
+}
+.submit-form .ant-form-item{
+  margin-bottom: 0;
+}
 
 .bm-burger-button {
   position: fixed;

@@ -17,9 +17,12 @@ const menu = (
 
 
 class HeaderPart extends Component {
-	state = {
-		isOpen: false,
-	};
+	constructor(props){
+		super(props);
+		this.state = {
+			isOpen: false
+		};
+	}
 
 	onOpenChange = () => {
 		this.setState({
@@ -28,19 +31,20 @@ class HeaderPart extends Component {
 	}
 
 	render() {
+		const  isOpen = this.state.isOpen;
+
 		return(
       <div id="outer-container">
-        <Menua width={ '60%' } right isOpen={this.state.isOpen} pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" }>
-          <a id="home" className="menu-item" href="/">Home</a>
-          <a id="about" className="menu-item" href="/about">About</a>
-          <a id="contact" className="menu-item" href="/contact">Contact</a>
-          <a className="menu-item--small" href="">Settings</a>
+        <Menua width={'60%'} right isOpen={isOpen} pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" }>
+          <a id="home" className="menu-item" href="/">首页</a>
+          <a id="about" className="menu-item" href="/about">案例</a>
+          <a id="contact" className="menu-item" href="/contact">设计师</a>
         </Menua>
 
         <Layout id="page-wrap">
-          <Header theme="dark" style={{ background: '#fff', padding: 0,overflow:'hidden',position: 'fixed', width: '100%',top:0}}>
+          <Header theme="dark" style={{ background: '#fff', padding: 0,overflow:'hidden',position: 'fixed', width: '100%',zIndex:30}}>
             <Row>
-              <Col style={{paddingLeft: '24px' }} span={12}>
+              <Col style={{paddingLeft: '24px'}} span={12}>
                 <img style={{width:'120px'}} src={logo} alt=""/>
               </Col>
               <Col span={4}>
