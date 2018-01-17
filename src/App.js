@@ -6,6 +6,10 @@ import SliderBanner from './commpent/index/SliderBanner';
 import NinePage from './commpent/index/NinePage';
 import WrappedNormalLoginForm from './commpent/index/FromIn';
 import FourPart from './commpent/index/FourPart';
+import FivePart from './commpent/index/FivePart';
+import SixPart from './commpent/index/SixPart';
+import SevenPart from './commpent/index/SevenPart';
+import EightPart from './commpent/index/EightPart';
 import './App.css';
 
 class App extends Component {
@@ -19,6 +23,12 @@ class App extends Component {
         <WrappedNormalLoginForm/>
         <FourPart/>
         <Divider style={{height:"10px",margin:"5px 0"}}/>
+        <FivePart/>
+        <Divider style={{height:"10px",margin:"5px 0"}}/>
+        <SixPart/>
+        <Divider style={{height:"10px",margin:"5px 0"}}/>
+        <SevenPart/>
+        <EightPart/>
       </div>
     );
   }

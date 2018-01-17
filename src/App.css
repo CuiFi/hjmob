@@ -24,11 +24,20 @@ img{
 .FourAddTwoBtn .ant-col-12{
   margin-bottom: 10px;
 }
+.FourAddTwoBtn .ant-col-24{
+  margin-bottom: 10px;
+}
 .FourAddTwoBtn .ant-btn{
   -webkit-border-radius:0;
   -moz-border-radius:0;
   border-radius:0;
   height: 26px;
+}
+.EightPart .ant-card-body{
+  padding: 5px 10px;
+}
+.EightPart.FourAddTwoBtn p{
+  margin: 0;
 }
 
 .submit-form{
