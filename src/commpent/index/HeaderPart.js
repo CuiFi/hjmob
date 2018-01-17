@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Layout, Menu, Icon, Dropdown,Row, Col} from 'antd';
 import { slide as Menua } from 'react-burger-menu';
-import logo from '../img/logo.png';
+import logo from '../../img/logo.png';
 const { Header } = Layout;
 
 const menu = (
@@ -49,7 +49,7 @@ class HeaderPart extends Component {
               </Col>
               <Col span={4}>
                 <Dropdown overlay={menu} trigger={['click']}>
-                  <a className="ant-dropdown-link" href="#">
+                  <a className="ant-dropdown-link" href="/">
                     北京<Icon type="environment" />
                   </a>
                 </Dropdown>

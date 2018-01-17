@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
-import {Row, Col,Card} from 'antd';
-import anli_index from '../img/anli_index.png';
+import {Row, Col,Card,Button} from 'antd';
+import anli_index from '../../img/anli_index.png';
 
 class FourPart extends Component {
 	render() {
 		return (
-			<div style={{paddingLeft:'10px',paddingRight:'10px'}}>
-				<Row style={{marginBottom:'10px'}} gutter={10}>
+			<div className="FourAddTwoBtn">
+				<Row>
+					<Col>
+						<h3>装修案例</h3>
+					</Col>
+				</Row>
+				<Row gutter={10}>
 					<Col span={12}>
 						<Card
 							hoverable
-							style={{ width: '100%' }}
 							cover={<img alt="example" src={anli_index} />}
 						>
 						</Card>
@@ -18,28 +22,31 @@ class FourPart extends Component {
 					<Col span={12}>
 						<Card
 							hoverable
-							style={{ width: '100%' }}
+							cover={<img alt="example" src={anli_index} />}
+						>
+						</Card>
+					</Col>
+					<Col span={12}>
+						<Card
+							hoverable
+							cover={<img alt="example" src={anli_index} />}
+						>
+						</Card>
+					</Col>
+					<Col span={12}>
+						<Card
+							hoverable
 							cover={<img alt="example" src={anli_index} />}
 						>
 						</Card>
 					</Col>
 				</Row>
-				<Row style={{marginBottom:'10px'}} gutter={10}>
+				<Row gutter={10}>
 					<Col span={12}>
-						<Card
-							hoverable
-							style={{ width: '100%' }}
-							cover={<img alt="example" src={anli_index} />}
-						>
-						</Card>
+						<Button style={{width:'100%'}}>更多风格装修案例>>></Button>
 					</Col>
 					<Col span={12}>
-						<Card
-							hoverable
-							style={{ width: '100%' }}
-							cover={<img alt="example" src={anli_index} />}
-						>
-						</Card>
+						<Button style={{width:'100%'}}>申请户型规划>>></Button>
 					</Col>
 				</Row>
 			</div>

@@ -14,6 +14,23 @@ img{
   width: 58px;
 }
 
+.FourAddTwoBtn{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.FourAddTwoBtn h3{
+  margin: 0.3em 0 0.5em;
+}
+.FourAddTwoBtn .ant-col-12{
+  margin-bottom: 10px;
+}
+.FourAddTwoBtn .ant-btn{
+  -webkit-border-radius:0;
+  -moz-border-radius:0;
+  border-radius:0;
+  height: 26px;
+}
+
 .submit-form{
   padding-left: 10px;
   padding-right: 10px;

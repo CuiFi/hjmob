@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import {Row, Col} from 'antd';
-import home from '../img/home.png';
-import anli from '../img/anli.png';
-import active from '../img/active.png';
-import deg from '../img/deg.png';
-import point from '../img/point.png';
-import three from '../img/three.png';
-import show from '../img/show.png';
-import hot from '../img/hot.png';
-import about from '../img/about.png';
+import home from '../../img/home.png';
+import anli from '../../img/anli.png';
+import active from '../../img/active.png';
+import deg from '../../img/deg.png';
+import point from '../../img/point.png';
+import three from '../../img/three.png';
+import show from '../../img/show.png';
+import hot from '../../img/hot.png';
+import about from '../../img/about.png';
 
 class PartBox extends Component {
 	render(){
