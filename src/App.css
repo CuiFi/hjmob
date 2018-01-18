@@ -31,13 +31,31 @@ img{
   -webkit-border-radius:0;
   -moz-border-radius:0;
   border-radius:0;
-  height: 26px;
+  /*height: 26px;*/
 }
 .EightPart .ant-card-body{
   padding: 5px 10px;
 }
 .EightPart.FourAddTwoBtn p{
   margin: 0;
+}
+.TenPart .ant-card-body{
+  padding: 6px 10px 3px;
+}
+.TenPart.FourAddTwoBtn h2{
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: normal;
+}
+.TenPart.FourAddTwoBtn .ant-card{
+  -webkit-border-radius:0;
+  -moz-border-radius:0;
+  border-radius:0;
+}
+.TwelvePart .ant-list-bordered{
+  -webkit-border-radius:0;
+  -moz-border-radius:0;
+  border-radius:0;
 }
 
 .submit-form{

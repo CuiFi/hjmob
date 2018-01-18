@@ -86,7 +86,7 @@ class EightPart extends Component {
 				</Row>
 				<Row gutter={10}>
 					<Col span={12}>
-						<Button style={{width:'100%'}}>查看更多热装小区>>></Button>
+						<Button style={{width:'100%'}}>查看热装小区>>></Button>
 					</Col>
 					<Col span={12}>
 						<Button style={{width:'100%'}}>预约看工地>>></Button>

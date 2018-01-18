@@ -11,7 +11,7 @@ class SixPart extends Component {
 		var myslider = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Common/json_slider',myslider).then(response => response.json()).then(json => this.setState({banner:json}));
+		fetch('http://www.hejianzhiyang.com/Api/json_slider',myslider).then(response => response.json()).then(json => this.setState({banner:json}));
 	};
 
 
