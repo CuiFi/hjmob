@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {Row, Col,List} from 'antd';
+import {Link} from 'react-router-dom';
+import {Row,Col,List} from 'antd';
 
 class TwelvePart extends Component {
 	constructor(props) {
@@ -11,7 +12,7 @@ class TwelvePart extends Component {
 		var myList = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/json_daquan?limit=6',myList).then(response => response.json()).then(json => this.setState({listText:json}));
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?type=daquan&limit=' + this.props.limit,myList).then(response => response.json()).then(json => this.setState({listText:json}));
 	};
 
 	render() {
@@ -27,8 +28,10 @@ class TwelvePart extends Component {
 					size="small"
 					bordered
 					dataSource={listText}
-					renderItem={item => (<List.Item>{item.title}</List.Item>)}
+					renderItem={item => (<List.Item><Link to={`details/${item.id}`}>{item.title}</Link></List.Item>)}
 				/>
+				{/*<div className="articleContainer" dangerouslySetInnerHTML={{__html:'<h1>haha</h1>'}}></div>*/}
+				{/*<PCNewsBlock id="3"/>*/}
 			</div>
 		);
 	}

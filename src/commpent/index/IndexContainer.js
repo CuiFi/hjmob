@@ -33,7 +33,7 @@ class IndexContainer extends Component {
 				<Divider style={{height:"10px",margin:"5px 0"}}/>
 				<ElevenPart/>
 				<Divider style={{height:"10px",margin:"5px 0"}}/>
-				<TwelvePart/>
+				<TwelvePart limit="10"/>
 				<Divider style={{height:"10px",margin:"5px 0"}}/>
 			</div>
 		);
