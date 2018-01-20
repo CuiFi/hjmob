@@ -11,6 +11,8 @@ class NewsContent extends Component {
 			method:'GET'
 		};
 		fetch("http://www.hejianzhiyang.com/Api/getDataByid?type=daquan&id=" + this.props.match.params.id ,myList).then(response => response.json()).then(json => this.setState({listText:json}));
+		console.log(this.props.match.url);
+		console.log(this.props.match.params);
 	};
 
 	createMarkup() {

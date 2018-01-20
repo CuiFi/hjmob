@@ -15,7 +15,7 @@ export default class Root extends Component{
 					<Switch>
 						<Route exact path="/" component={App}></Route>
 						<Route path="/details/:id" component={NewsContent}></Route>
-						<Route path="/user" component={TwelvePart}></Route>
+						<Route path="/active/:id" component={TwelvePart}></Route>
 					</Switch>
 				</HashRouter>
 			</div>

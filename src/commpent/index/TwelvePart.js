@@ -30,8 +30,6 @@ class TwelvePart extends Component {
 					dataSource={listText}
 					renderItem={item => (<List.Item><Link to={`details/${item.id}`}>{item.title}</Link></List.Item>)}
 				/>
-				{/*<div className="articleContainer" dangerouslySetInnerHTML={{__html:'<h1>haha</h1>'}}></div>*/}
-				{/*<PCNewsBlock id="3"/>*/}
 			</div>
 		);
 	}

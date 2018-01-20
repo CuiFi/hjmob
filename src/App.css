@@ -57,6 +57,16 @@ img{
   -moz-border-radius:0;
   border-radius:0;
 }
+.ThirteenPart.TenPart .ant-card-body{
+  padding: 6px 5px 3px;
+}
+.footer h3{
+  margin-top: 0.3em;
+  font-size: 0.9em;
+  margin-bottom: 0.3em;
+  padding-left: 10px;
+  padding-right: 10px;
+}
 
 .submit-form{
   padding-left: 10px;

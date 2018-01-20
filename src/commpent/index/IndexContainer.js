@@ -11,6 +11,7 @@ import EightPart from './EightPart';
 import TenPart from './TenPart';
 import ElevenPart from './ElevenPart';
 import TwelvePart from './TwelvePart';
+import ThirteenPart from './ThirteenPart';
 
 class IndexContainer extends Component {
 	render() {
@@ -35,6 +36,7 @@ class IndexContainer extends Component {
 				<Divider style={{height:"10px",margin:"5px 0"}}/>
 				<TwelvePart limit="10"/>
 				<Divider style={{height:"10px",margin:"5px 0"}}/>
+				<ThirteenPart/>
 			</div>
 		);
 	}
