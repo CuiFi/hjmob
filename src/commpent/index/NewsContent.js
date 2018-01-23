@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SecondHeaderPart from './SecondHeaderPart';
 
 class NewsContent extends Component {
 	constructor(props) {
@@ -29,9 +30,12 @@ class NewsContent extends Component {
 		// 	))
 		// 	: '没有加载到任何新闻';
 		return (
-			<div style={{paddingLeft:'10px',paddingRight:'10px'}}>
-				<h3>{listText.title}</h3>
-				<div className="articleContainer" dangerouslySetInnerHTML={this.createMarkup()}></div>
+			<div>
+				<SecondHeaderPart title={listText.labelsName}/>
+				<div style={{paddingLeft:'10px',paddingRight:'10px',paddingTop:'64px'}}>
+					<h3>{listText.title}</h3>
+					<div className="articleContainer" dangerouslySetInnerHTML={this.createMarkup()}></div>
+				</div>
 			</div>
 		);
 	};

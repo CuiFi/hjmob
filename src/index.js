@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import {Route, BrowserRouter,Switch,HashRouter} from 'react-router-dom';
 import App from './App';
-import TwelvePart from './commpent/index/TwelvePart';
 import NewsContent from './commpent/index/NewsContent';
+import HotList from './commpent/hotHome/HotList';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -15,7 +15,7 @@ export default class Root extends Component{
 					<Switch>
 						<Route exact path="/" component={App}></Route>
 						<Route path="/details/:id" component={NewsContent}></Route>
-						<Route path="/active/:id" component={TwelvePart}></Route>
+						<Route path="/hothome/" component={HotList}></Route>
 					</Switch>
 				</HashRouter>
 			</div>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import {Row, Col,Card,Button, Icon} from 'antd';
 
 class EightPart extends Component {
@@ -86,8 +87,11 @@ class EightPart extends Component {
 				</Row>
 				<Row gutter={10}>
 					<Col span={12}>
-						<Button style={{width:'100%'}}>查看热装小区>>></Button>
+						<Link to={`/hothome/`}>
+							<Button style={{width:'100%'}}>查看热装小区>>></Button>
+						</Link>
 					</Col>
+
 					<Col span={12}>
 						<Button style={{width:'100%'}}>预约看工地>>></Button>
 					</Col>

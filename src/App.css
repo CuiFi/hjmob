@@ -1,3 +1,7 @@
+ul,li{
+  list-style: none;
+  padding:0;
+}
 img{
   max-width: 100%;
 }
@@ -67,6 +71,23 @@ img{
   padding-left: 10px;
   padding-right: 10px;
 }
+.HotList{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.HotList .ant-card-body{
+  padding:10px;
+}
+.HotList p{
+  margin:0;
+}
+.HotList .ant-list-item{
+  padding-top: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+
 
 .submit-form{
   padding-left: 10px;
