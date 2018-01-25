@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import SecondHeaderPart from './SecondHeaderPart';
+import SecondHeaderPart from '../index/SecondHeaderPart';
 
-class NewsContent extends Component {
+class HotContent extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {listText:''};
@@ -13,8 +13,9 @@ class NewsContent extends Component {
 		};
 		fetch("http://www.hejianzhiyang.com/Api/getDataByid?sheet=daquan&id=" + this.props.match.params.id ,myList).then(response => response.json()).then(json => this.setState({listText:json}));
 		console.log(this.props.match.url);
-		// console.log(this.props.match.params);
-		// console.log(this.props.match);
+		console.log(this.props.match.params);
+		console.log(this.props.match.params.id);
+		console.log(this.props.match);
 	};
 
 	createMarkup() {
@@ -42,4 +43,4 @@ class NewsContent extends Component {
 	};
 }
 
-export default NewsContent;
+export default HotContent;

@@ -12,21 +12,21 @@ class NormalLoginForm extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 		this.props.form.validateFields((err, values) => {
+			// 传输其他必要数据
+			var otherData = {'cityID':8,'url':'/','orderTypeID':86};
+			var obj = Object.assign(otherData,values);
 			if (!err) {
-				console.log('Received values of form: ', values);
-				fetch('http://www.hejianzhiyang.com/Cc/doOrder', {
+				fetch('http://www.hejianzhiyang.com/Api/doOrder', {
 					method: 'POST',
-					mode: 'no-cors',
+					mode: 'cors',
 					headers: {
-						'Accept': 'application/json',
-						'Content-Type': 'application/json'
+						'Content-Type': 'application/x-www-form-urlencoded'
 					},
-					body: JSON.stringify(values)
+					body: JSON.stringify(obj)
 				}).then((resp) => {
-					console.log(resp);
-					if (!resp.ok){
-						console.log("报名成功");
+					if (resp.ok){
 						openNotificationWithIcon('success');
+						this.props.form.resetFields();
 					}
 				}).catch((error) =>{
 					console.log('request failed', error)
@@ -39,21 +39,21 @@ class NormalLoginForm extends Component {
 		return (
 			<Form onSubmit={this.handleSubmit} className="submit-form">
 				<FormItem>
-					{getFieldDecorator('userName', {
+					{getFieldDecorator('reName', {
 						rules: [{ required: true, message: '请输入您的姓名!' }],
 					})(
 						<Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="您的姓名" />
 					)}
 				</FormItem>
 				<FormItem>
-					{getFieldDecorator('userPhone', {
+					{getFieldDecorator('telPhone', {
 						rules: [{ required: true, message: '请输入您的联系电话!' },{ min:8, message: '至少要输入8位座机' },{ max:11, message: '手机号已经超过11位,请检查' },{ pattern: /^[0-9]*$/, message: '手机号必须为数字' }],
 					})(
 						<Input prefix={<Icon type="phone" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="您的电话" />
 					)}
 				</FormItem>
 				<FormItem>
-					{getFieldDecorator('userHouse')(
+					{getFieldDecorator('community')(
 						<Input prefix={<Icon type="phone" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="楼盘名称" />
 					)}
 				</FormItem>

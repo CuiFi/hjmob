@@ -13,7 +13,7 @@ class SliderBanner extends Component {
 		var myslider = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?type=slider&limit=3',myslider).then(response => response.json()).then(json => this.setState({banner:json}));
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=slider&limit=3',myslider).then(response => response.json()).then(json => this.setState({banner:json}));
 	};
 
 

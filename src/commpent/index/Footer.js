@@ -10,7 +10,7 @@ class Footer extends Component {
 		var myList = {
 			method:'GET'
 		};
-		fetch("http://www.hejianzhiyang.com/Api/getDataByid?type=slider&id=5" ,myList).then(response => response.json()).then(json => this.setState({bottomImg:json}));
+		fetch("http://www.hejianzhiyang.com/Api/getDataByid?sheet=slider&id=5" ,myList).then(response => response.json()).then(json => this.setState({bottomImg:json}));
 	};
 	render() {
 		const {bottomImg} = this.state;

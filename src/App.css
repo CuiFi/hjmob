@@ -72,8 +72,11 @@ img{
   padding-right: 10px;
 }
 .HotList{
+  padding-top: 64px;
   padding-left: 10px;
   padding-right: 10px;
+  overflow: auto;
+  height: 700px;
 }
 .HotList .ant-card-body{
   padding:10px;
@@ -85,6 +88,12 @@ img{
   padding-top: 0;
   padding-bottom: 0;
   border-bottom: 0;
+}
+
+.demo-loading {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
 }
 
 

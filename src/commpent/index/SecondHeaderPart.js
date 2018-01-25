@@ -21,7 +21,7 @@ class SecondHeaderPart extends Component {
 
 
 	render() {
-		const  isOpen = this.state.isOpen;
+		const isOpen = this.state.isOpen;
 
 		return(
       <div id="outer-container">

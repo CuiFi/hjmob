@@ -6,6 +6,9 @@ import Footer from './commpent/index/Footer';
 import './App.css';
 
 class App extends Component {
+	componentWillMount(){
+		console.log(this.props.match.url);
+	}
   render() {
     return (
       <div>

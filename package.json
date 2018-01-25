@@ -12,7 +12,9 @@
     "react-app-rewired": "^1.4.0",
     "react-burger-menu": "^2.2.3",
     "react-dom": "^16.2.0",
-    "react-scripts": "1.0.17"
+    "react-infinite-scroller": "^1.1.3",
+    "react-scripts": "1.0.17",
+    "reqwest": "^2.0.5"
   },
   "scripts": {
     "start": "react-app-rewired start",
