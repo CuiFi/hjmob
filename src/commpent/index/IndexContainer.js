@@ -12,7 +12,6 @@ import TenPart from './TenPart';
 import ElevenPart from './ElevenPart';
 import TwelvePart from './TwelvePart';
 import ThirteenPart from './ThirteenPart';
-import HotList from '../hotHome/HotList';
 
 class IndexContainer extends Component {
 	render() {

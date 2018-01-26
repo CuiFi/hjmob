@@ -13,7 +13,7 @@ class SliderBanner extends Component {
 		var myslider = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=slider&limit=3',myslider).then(response => response.json()).then(json => this.setState({banner:json}));
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=slider&page=1&limit=10&recommendIndex=1&cityID=7',myslider).then(response => response.json()).then(json => this.setState({banner:json}));
 	};
 
 
@@ -27,11 +27,10 @@ class SliderBanner extends Component {
 			))
 			: '没有加载到任何数据';
 		return (
-      <Content style={{paddingTop:'64px'}}>
+      <Content style={{marginTop:'64px'}}>
         <Carousel autoplay>
           <div>{bannerList[0]}</div>
           <div>{bannerList[1]}</div>
-          <div>{bannerList[2]}</div>
         </Carousel>
       </Content>
 		);

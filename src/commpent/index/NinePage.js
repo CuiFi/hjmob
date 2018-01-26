@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Row, Col} from 'antd';
-import home from '../../img/home.png';
 import anli from '../../img/anli.png';
 import active from '../../img/active.png';
 import deg from '../../img/deg.png';
@@ -26,21 +25,15 @@ class NinePage extends Component {
 		return (
 			<div className="NineIcon">
 				<Row>
-					<PartBox text="官网首页" img={home}/>
 					<PartBox text="装修案例" img={anli}/>
 					<PartBox text="活动优惠" img={active}/>
-					<PartBox text="活动优惠" img={active}/>
-				</Row>
-				<Row>
 					<PartBox text="设计师" img={deg}/>
 					<PartBox text="装修指南" img={point}/>
-					<PartBox text="3D全景" img={three}/>
-					<PartBox text="3D全景" img={three}/>
 				</Row>
 				<Row>
+					<PartBox text="3D全景" img={three}/>
 					<PartBox text="工艺展示" img={show}/>
 					<PartBox text="热装小区" img={hot}/>
-					<PartBox text="关于合建" img={about}/>
 					<PartBox text="关于合建" img={about}/>
 				</Row>
 			</div>
