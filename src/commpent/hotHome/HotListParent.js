@@ -4,25 +4,26 @@ import {Link} from 'react-router-dom';
 import { List, Icon} from 'antd';
 import { Row, Col,Card} from 'antd';
 import { message, Spin } from 'antd';
+import { Radio } from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';
-import { Select} from 'antd';
-const Option = Select.Option;
+const RadioButton = Radio.Button;
+const RadioGroup = Radio.Group;
 
 const fakeDataUrl = 'http://www.hejianzhiyang.com/Api/getDataByType?sheet=daquan&limit=';
 var page = 5;
 
-function handleChange(value) {
-	console.log(`Selected: ${value}`);
+function onChange(e) {
+	console.log(`radio checked:${e.target.value}`);
 }
 
-class HotList extends Component {
+
+
+class HotListParent extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
 			data: [],
-			area: [],
-			housetype: [],
-			housestyle: [],
+			radiodata: [],
 			loading: false,
 			hasMore: true,
 		};
@@ -36,18 +37,10 @@ class HotList extends Component {
 		page++;
 	}
 	componentWillMount() {
-		// 获取下拉选项风格数据
-		var getoption = {
+		var myList = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/selectDictionary?datatypeID=15',getoption).then(response => response.json()).then(json => this.setState({housestyle:json}));
-
-		// 获取下拉选项户型数据
-		fetch('http://www.hejianzhiyang.com/Api/selectDictionary?datatypeID=16',getoption).then(response => response.json()).then(json => this.setState({housetype:json}));
-
-		// 获取下拉选项面积数据
-		fetch('http://www.hejianzhiyang.com/Api/selectDictionary?datatypeID=172',getoption).then(response => response.json()).then(json => this.setState({area:json}));
-
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=qu&cityID=7&page=1&limit=20',myList).then(response => response.json()).then(json => this.setState({radiodata:json}));
 
 		this.getData((res) => {
 			this.setState({
@@ -78,52 +71,16 @@ class HotList extends Component {
 		});
 	}
 	render() {
-		const {housestyle} = this.state;
-		const {housetype} = this.state;
-		const {area} = this.state;
-		const housestyleListData = housestyle.map((housestyleItem, index) => (
-			<Option key={housestyleItem.id}>{housestyleItem.dataName}</Option>
-		));
-		const housetypeListData = housetype.map((housetypeItem, index) => (
-			<Option key={housetypeItem.id}>{housetypeItem.dataName}</Option>
-		));
-		const areaListData = area.map((areaItem, index) => (
-			<Option key={areaItem.id}>{areaItem.dataName}</Option>
+		const {radiodata} = this.state;
+		const radiodataList = radiodata.map((radiodataItem, index) => (
+			<RadioButton key={radiodataItem.id} value={radiodataItem.id}>{radiodataItem.name}</RadioButton>
 		));
 		return (
-			<div>
+			<div className="HotListParent">
 				<SecondHeaderPart title="热装小区"/>
-				<div className="DropdownBtn">
-					<Row>
-						<Col span={8}>
-							<Select
-								defaultValue="风格"
-								onChange={handleChange}
-								style={{ width: '100%' }}
-							>
-								{housestyleListData}
-							</Select>
-						</Col>
-						<Col span={8}>
-							<Select
-								defaultValue="户型"
-								onChange={handleChange}
-								style={{ width: '100%' }}
-							>
-								{housetypeListData}
-							</Select>
-						</Col>
-						<Col span={8}>
-							<Select
-								defaultValue="面积"
-								onChange={handleChange}
-								style={{ width: '100%' }}
-							>
-								{areaListData}
-							</Select>
-						</Col>
-					</Row>
-				</div>
+				<RadioGroup style={{paddingTop:'64px',paddingLeft:'8px',paddingRight:'8px'}} onChange={onChange} defaultValue="a" size="small">
+					{radiodataList}
+				</RadioGroup>
 				<div className="HotList">
 					<InfiniteScroll
 						initialLoad={false}
@@ -137,8 +94,7 @@ class HotList extends Component {
 							dataSource={this.state.data}
 							renderItem={item => (
 								<List.Item key={item.id}>
-									{console.log(this.props.match.url)}
-									<Link to={`${this.props.match.url}${item.id}`}>
+									<Link to={`/hothome/${item.id}/list/`}>
 										<Card
 											hoverable
 											style={{ width: '100%' }}
@@ -167,4 +123,4 @@ class HotList extends Component {
 	};
 }
 
-export default HotList;
+export default HotListParent;

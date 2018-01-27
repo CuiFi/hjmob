@@ -32,7 +32,7 @@ class SecondHeaderPart extends Component {
         </Menua>
 
         <Layout id="page-wrap">
-          <Header theme="dark" style={{ background: '#fff', padding: 0,overflow:'hidden',position: 'fixed', width: '100%',zIndex:30}}>
+          <Header theme="dark" style={{ background: '#fff', padding: 0,overflow:'hidden',position: 'fixed', width: '100%',zIndex:1060, boxShadow:'0 1px #c8c8c8'}}>
             <Row>
               <Col style={{paddingLeft: '24px'}} span={4} onClick={history.goBack}>
 	              <Icon type="left" />

@@ -71,12 +71,18 @@ img{
   padding-left: 10px;
   padding-right: 10px;
 }
+.HotListParent .ant-radio-button-wrapper:last-child{
+  border-radius: 0;
+}
+.HotListParent .ant-radio-button-wrapper:first-child{
+  border-radius: 0;
+}
 .HotList{
-  padding-top: 64px;
+  padding-top: 10px;
   padding-left: 10px;
   padding-right: 10px;
   overflow: auto;
-  height: 660px;
+  height: 570px;
 }
 .HotList .ant-card-body{
   padding:10px;
@@ -89,16 +95,23 @@ img{
   padding-bottom: 0;
   border-bottom: 0;
 }
-
 .demo-loading {
   position: absolute;
   bottom: -40px;
   left: 50%;
 }
-
 .ant-modal-body{
   padding: 10px;
 }
+.DropdownBtn{
+  padding-top: 64px;
+}
+.DropdownBtn .ant-select-selection{
+  border-radius: 0;
+}
+
+
+
 
 
 

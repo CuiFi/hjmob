@@ -39,3 +39,12 @@
     console.log(obj); // { a: 1, b: 2, c: 3 }
     console.log(o1);  // { a: 1, b: 2, c: 3 }, 注意目标对象自身也会改变。
     ```
+
+5. 获取父级路由进行再次处理:
+   ```
+   <Route path="/hothome/:id/list/:id" component={HotContent}></Route>
+   <Route path="/hothome/:id/list/" component={HotList}></Route>
+   <Route path="/hothome/" component={HtListParent}></Route>
+
+   <Link to={`${this.props.match.url}${item.id}`}></Link>
+   ```
