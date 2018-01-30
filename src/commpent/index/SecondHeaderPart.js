@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import { Layout,  Icon, Row, Col} from 'antd';
 import { slide as Menua } from 'react-burger-menu';
 import createHistory from "history/createBrowserHistory";
@@ -9,30 +10,42 @@ class SecondHeaderPart extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			isOpen: false
-		};
+			menuOpen: false
+		}
 	}
 
-	onOpenChange = () => {
-		this.setState({
-			isOpen: !this.props.isOpen
-		});
+	// 保持状态的同步,如果少了此方法,怎会造成弹出框,下拉加载,侧边栏完全混乱
+	handleStateChange = (state) => {
+		this.setState({menuOpen: state.isOpen})
+	}
+
+	// closeMenu () {
+	// 	this.setState({menuOpen: false})
+	// }
+
+	openMenu = () => {
+		this.setState({menuOpen: true})
 	}
 
 
 	render() {
-		const isOpen = this.state.isOpen;
 
 		return(
       <div id="outer-container">
-        <Menua width={'60%'} right isOpen={isOpen} pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" }>
-          <a id="home" className="menu-item" href="/">首页</a>
-          <a id="about" className="menu-item" href="/about">案例</a>
-          <a id="contact" className="menu-item" href="/contact">设计师</a>
+        <Menua onStateChange={this.handleStateChange} width={'60%'} right isOpen={this.state.menuOpen} pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" }>
+	        <Link id="home" className="menu-item" to={`/`}>
+		        首页
+	        </Link>
+	        <Link id="home" className="menu-item" to={`/hothome/`}>
+		        热装小区
+	        </Link>
+	        <Link id="home" className="menu-item" to={`/casehome/`}>
+		        装修案例
+	        </Link>
         </Menua>
 
         <Layout id="page-wrap">
-          <Header theme="dark" style={{ background: '#fff', padding: 0,overflow:'hidden',position: 'fixed', width: '100%',zIndex:1060, boxShadow:'0 1px #c8c8c8'}}>
+          <Header theme="dark" style={{ background: '#fff', padding: 0,overflow:'hidden',position: 'fixed', width: '100%',zIndex:1, boxShadow:'0 1px #c8c8c8'}}>
             <Row>
               <Col style={{paddingLeft: '24px'}} span={4} onClick={history.goBack}>
 	              <Icon type="left" />
@@ -44,7 +57,7 @@ class SecondHeaderPart extends Component {
                 <Icon
                   className="trigger"
                   type={'bars'}
-                  onClick={ this.onOpenChange }
+                  onClick={ this.openMenu }
                 />
               </Col>
             </Row>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import { Layout, Menu, Icon, Dropdown,Row, Col} from 'antd';
 import { slide as Menua } from 'react-burger-menu';
 import logo from '../../img/logo.png';
@@ -15,30 +16,40 @@ const menu = (
   </Menu>
 );
 
-
 class HeaderPart extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			isOpen: false
-		};
+			menuOpen: false
+		}
 	}
 
-	onOpenChange = () => {
-		this.setState({
-			isOpen: !this.props.isOpen
-		});
+	// 保持状态的同步,如果少了此方法,怎会造成弹出框,下拉加载,侧边栏完全混乱
+	handleStateChange = (state) => {
+		this.setState({menuOpen: state.isOpen})
+	}
+
+	// closeMenu () {
+	// 	this.setState({menuOpen: false})
+	// }
+
+	openMenu = () => {
+		this.setState({menuOpen: true})
 	}
 
 	render() {
-		const  isOpen = this.state.isOpen;
-
 		return(
       <div id="outer-container">
-        <Menua width={'60%'} right isOpen={isOpen} pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" }>
-          <a id="home" className="menu-item" href="/">首页</a>
-          <a id="about" className="menu-item" href="/about">案例</a>
-          <a id="contact" className="menu-item" href="/contact">设计师</a>
+        <Menua onStateChange={this.handleStateChange} width={'60%'} right isOpen={this.state.menuOpen} pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" }>
+	        <Link id="home" className="menu-item" to={`/`}>
+		        首页
+	        </Link>
+	        <Link id="hothome" className="menu-item" to={`/hothome/`}>
+		        热装小区
+	        </Link>
+	        <Link id="casehome" className="menu-item" to={`/casehome/`}>
+		        装修案例
+	        </Link>
         </Menua>
 
         <Layout id="page-wrap">
@@ -58,7 +69,7 @@ class HeaderPart extends Component {
                 <Icon
                   className="trigger"
                   type={'bars'}
-                  onClick={ this.onOpenChange }
+                  onClick={ this.openMenu }
                 />
               </Col>
             </Row>

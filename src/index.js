@@ -5,7 +5,9 @@ import App from './App';
 import NewsContent from './commpent/index/NewsContent';
 import HotList from './commpent/hotHome/HotList';
 import HotContent from './commpent/hotHome/HotContent';
+import CaseContent from './commpent/case/CaseContent';
 import HtListParent from './commpent/hotHome/HotListParent';
+import CaseList from './commpent/case/CaseList';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -20,6 +22,8 @@ export default class Root extends Component{
 						<Route path="/hothome/:id/list/:id" component={HotContent}></Route>
 						<Route path="/hothome/:id/list/" component={HotList}></Route>
 						<Route path="/hothome/" component={HtListParent}></Route>
+						<Route path="/casehome/:id" component={CaseContent}></Route>
+						<Route path="/casehome/" component={CaseList}></Route>
 					</Switch>
 				</HashRouter>
 			</div>

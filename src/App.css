@@ -77,12 +77,15 @@ img{
 .HotListParent .ant-radio-button-wrapper:first-child{
   border-radius: 0;
 }
+.HotListParent .ant-radio-button-wrapper:first-child:last-child{
+  border-radius: 0;
+}
 .HotList{
   padding-top: 10px;
   padding-left: 10px;
   padding-right: 10px;
   overflow: auto;
-  height: 570px;
+  height: 665px;
 }
 .HotList .ant-card-body{
   padding:10px;
@@ -109,7 +112,6 @@ img{
 .DropdownBtn .ant-select-selection{
   border-radius: 0;
 }
-
 
 
 

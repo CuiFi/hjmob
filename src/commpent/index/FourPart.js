@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import {Row, Col,Card,Modal} from 'antd';
 import { Form, Icon, Input, Button,notification} from 'antd';
 const FormItem = Form.Item;
@@ -19,7 +20,7 @@ class NormalLoginForm extends Component {
 		var mylist = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&page=1&limit=4',mylist).then(response => response.json()).then(json => this.setState({itemImg:json}));
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&limit=4',mylist).then(response => response.json()).then(json => this.setState({itemImg:json}));
 	};
 	// 设置模态框状态,让其显示
 	showModal = () => {
@@ -78,11 +79,13 @@ class NormalLoginForm extends Component {
 		const itemList = itemImg.length
 			? itemImg.map((imgItem, index) => (
 				<Col span={12} key={imgItem.id}>
-					<Card
-						hoverable
-						cover={<img alt={imgItem.title} src={"http://www.hejianzhiyang.com/Upload/"+imgItem.imgName_438_348_m} />}
-					>
-					</Card>
+					<Link to={`/casehome/${imgItem.id}`}>
+						<Card
+							hoverable
+							cover={<img alt={imgItem.title} src={"http://www.hejianzhiyang.com/Upload/"+imgItem.imgName_438_348_m} />}
+						>
+						</Card>
+					</Link>
 				</Col>
 			))
 			: '没有加载到任何数据';
@@ -98,7 +101,9 @@ class NormalLoginForm extends Component {
 				</Row>
 				<Row gutter={10}>
 					<Col span={12}>
-						<Button style={{width:'100%'}}>更多风格装修案例>>></Button>
+						<Link to={'/casehome/'}>
+							<Button style={{width:'100%'}}>更多风格装修案例>>></Button>
+						</Link>
 					</Col>
 					<Col span={12}>
 						<Button style={{width:'100%'}} onClick={this.showModal}>申请户型规划>>></Button>

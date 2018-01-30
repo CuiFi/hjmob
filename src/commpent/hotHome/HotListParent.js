@@ -3,7 +3,7 @@ import SecondHeaderPart from '../index/SecondHeaderPart';
 import {Link} from 'react-router-dom';
 import { List, Icon} from 'antd';
 import { Row, Col,Card} from 'antd';
-import { message, Spin } from 'antd';
+import { message, Spin} from 'antd';
 import { Radio } from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';
 const RadioButton = Radio.Button;
@@ -73,15 +73,19 @@ class HotListParent extends Component {
 	render() {
 		const {radiodata} = this.state;
 		const radiodataList = radiodata.map((radiodataItem, index) => (
-			<RadioButton key={radiodataItem.id} value={radiodataItem.id}>{radiodataItem.name}</RadioButton>
+			<Col span={6} key={radiodataItem.id}>
+				<RadioButton value={radiodataItem.id} style={{width:'90%',textAlign:'center',marginBottom:'5px'}}>{radiodataItem.name}</RadioButton>
+			</Col>
 		));
 		return (
 			<div className="HotListParent">
 				<SecondHeaderPart title="热装小区"/>
-				<RadioGroup style={{paddingTop:'64px',paddingLeft:'8px',paddingRight:'8px'}} onChange={onChange} defaultValue="a" size="small">
-					{radiodataList}
-				</RadioGroup>
 				<div className="HotList">
+					<RadioGroup style={{paddingTop:'64px'}} onChange={onChange} defaultValue="a" size="small">
+						<Row>
+							{radiodataList}
+						</Row>
+					</RadioGroup>
 					<InfiniteScroll
 						initialLoad={false}
 						pageStart={0}
