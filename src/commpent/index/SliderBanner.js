@@ -29,8 +29,7 @@ class SliderBanner extends Component {
 		return (
       <Content style={{marginTop:'64px'}}>
         <Carousel autoplay>
-          <div>{bannerList[0]}</div>
-          <div>{bannerList[1]}</div>
+          <div>{bannerList}</div>
         </Carousel>
       </Content>
 		);

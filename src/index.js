@@ -24,6 +24,7 @@ export default class Root extends Component{
 						<Route path="/hothome/" component={HtListParent}></Route>
 						<Route path="/casehome/:id" component={CaseContent}></Route>
 						<Route path="/casehome/" component={CaseList}></Route>
+						<Route path="/designer/" component={CaseList}></Route>
 					</Switch>
 				</HashRouter>
 			</div>

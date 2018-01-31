@@ -4,7 +4,7 @@ import SliderBanner from './SliderBanner';
 import NinePage from './NinePage';
 import WrappedNormalLoginForm from './FromIn';
 import FourPart from './FourPart';
-import FivePart from './FivePart';
+// import FivePart from './FivePart';
 import SixPart from './SixPart';
 import SevenPart from './SevenPart';
 import EightPart from './EightPart';
@@ -22,8 +22,8 @@ class IndexContainer extends Component {
 				<Divider style={{height:"10px",margin:"5px 0"}}/>
 				<WrappedNormalLoginForm/>
 				<FourPart/>
-				<Divider style={{height:"10px",margin:"5px 0"}}/>
-				<FivePart/>
+				{/*<Divider style={{height:"10px",margin:"5px 0"}}/>*/}
+				{/*<FivePart/>*/}
 				<Divider style={{height:"10px",margin:"5px 0"}}/>
 				<SixPart/>
 				<Divider style={{height:"10px",margin:"5px 0"}}/>

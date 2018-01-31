@@ -11,7 +11,11 @@ class SixPart extends Component {
 		var myslider = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=slider&limit=3',myslider).then(response => response.json()).then(json => this.setState({banner:json}));
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=quanjing&limit=3',myslider).then(response => response.json()).then(json => this.setState({banner:json}));
+	};
+
+	createMarkup() {
+		return { __html:this.state.listText.content };
 	};
 
 
@@ -20,7 +24,7 @@ class SixPart extends Component {
 		const bannerList = banner.length
 			? banner.map((bannerItem, index) => (
 				<div key={bannerItem.id}>
-					<img src={"http://www.hejianzhiyang.com/Upload/"+bannerItem.imgName_884_359} alt={bannerItem.title} />
+					<img src={"http://www.hejianzhiyang.com/Upload/"+bannerItem.imgName_380_209} alt={bannerItem.title} />
 				</div>
 			))
 			: '没有加载到任何数据';
@@ -37,6 +41,8 @@ class SixPart extends Component {
 							<div>{bannerList[0]}</div>
 							<div>{bannerList[1]}</div>
 							<div>{bannerList[2]}</div>
+							{console.log(typeof bannerList)}
+							<div className="articleContainer" dangerouslySetInnerHTML={{__html:bannerList}}></div>
 						</Carousel>
 					</Col>
 				</Row>

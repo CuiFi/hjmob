@@ -16,12 +16,7 @@ const openNotificationWithIcon = (type) => {
 	});
 };
 
-const fakeDataUrl = 'http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&limit=';
-var page = 5;
-
-function handleChange(value) {
-	console.log(`Selected: ${value}`);
-}
+var page = 1;
 
 class NormalLoginForm extends Component {
 	constructor(props){
@@ -34,7 +29,33 @@ class NormalLoginForm extends Component {
 			housestyle: [],
 			loading: false,
 			hasMore: true,
+			styleMark:'',
+			houseTypeMark:'',
+			areaMark:'',
+			loadPage:1
 		};
+	}
+
+	componentWillMount() {
+		// 获取下拉选项风格数据
+		var getoption = {
+			method:'GET'
+		};
+		fetch('http://www.hejianzhiyang.com/Api/selectDictionary?datatypeID=15',getoption).then(response => response.json()).then(json => this.setState({housestyle:json}));
+
+		// 获取下拉选项户型数据
+		fetch('http://www.hejianzhiyang.com/Api/selectDictionary?datatypeID=16',getoption).then(response => response.json()).then(json => this.setState({housetype:json}));
+
+		// 获取下拉选项面积数据
+		fetch('http://www.hejianzhiyang.com/Api/selectDictionary?datatypeID=172',getoption).then(response => response.json()).then(json => this.setState({area:json}));
+
+
+		this.getData((res) => {
+			this.setState({
+				data: res,
+			});
+		});
+		console.log(this.props.match.url);
 	}
 
 	// 设置模态框状态,让其显示
@@ -58,7 +79,7 @@ class NormalLoginForm extends Component {
 		// 表单验证提交
 		this.props.form.validateFields((err, values) => {
 			// 传输其他必要数据
-			var otherData = {'cityID':8,'url':'/','orderTypeID':86};
+			var otherData = {'cityID':7,'url':this.props.match.url,'orderTypeID':86};
 			var obj = Object.assign(otherData,values);
 			if (!err) {
 				fetch('http://www.hejianzhiyang.com/Api/doOrder', {
@@ -90,56 +111,97 @@ class NormalLoginForm extends Component {
 		});
 	}
 
+	// 风格选择数据
+	getStyleData = (styleId) => {
+		var getoption = {
+			method:'GET'
+		};
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&page=1&limit=5&styleID='+styleId + '&huxingID=' + this.state.houseTypeMark + '&areaID=' + this.state.areaMark,getoption).
+		then(response => response.json()).
+		then(json => this.setState({
+			data:json,
+			styleMark:styleId
+		}));
+	}
+	// 户型选择数据
+	getHouseData = (huxingId) => {
+		var getoption = {
+			method:'GET'
+		};
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&page=1&limit=5&styleID='+this.state.styleMark + '&huxingID=' + huxingId + '&areaID=' + this.state.areaMark,getoption).
+		then(response => response.json()).
+		then(json => this.setState({
+			data:json,
+			houseTypeMark:huxingId
+		}));
+	}
+	// 面积选择数据
+	getAreaData = (areaId) => {
+		var getoption = {
+			method:'GET'
+		};
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&page=1&limit=5&styleID='+this.state.styleMark + '&huxingID=' + this.state.houseTypeMark + '&areaID=' + areaId,getoption).
+		then(response => response.json()).
+		then(json => this.setState({
+			data:json,
+			areaMark:areaId
+		}));
+	}
+	styleHandleChange = (value) => {
+		console.log(`风格: ${value}`);
+		this.getStyleData(value);
+		console.log(this.state.styleMark);
+		console.log(this.state.houseTypeMark);
+		console.log(this.state.areaMark);
+	}
+	houseTypeHandleChange = (value) => {
+		console.log(`户型: ${value}`);
+		this.getHouseData(value);
+		console.log(this.state.styleMark);
+		console.log(this.state.houseTypeMark);
+		console.log(this.state.areaMark);
+	}
+	areaHandleChange = (value) => {
+		console.log(`面积: ${value}`);
+		this.getAreaData(value);
+		console.log(this.state.styleMark);
+		console.log(this.state.houseTypeMark);
+		console.log(this.state.areaMark);
+	}
+
+	// 滚动数据
 	getData = (callback) => {
 		var myList = {
 			method:'GET'
 		};
-
-		fetch(fakeDataUrl+page ,myList).then(response => response.json()).then(res => callback(res));
-		page++;
-	}
-	componentWillMount() {
-		// 获取下拉选项风格数据
-		var getoption = {
-			method:'GET'
-		};
-		fetch('http://www.hejianzhiyang.com/Api/selectDictionary?datatypeID=15',getoption).then(response => response.json()).then(json => this.setState({housestyle:json}));
-
-		// 获取下拉选项户型数据
-		fetch('http://www.hejianzhiyang.com/Api/selectDictionary?datatypeID=16',getoption).then(response => response.json()).then(json => this.setState({housetype:json}));
-
-		// 获取下拉选项面积数据
-		fetch('http://www.hejianzhiyang.com/Api/selectDictionary?datatypeID=172',getoption).then(response => response.json()).then(json => this.setState({area:json}));
-
-
-		this.getData((res) => {
-			this.setState({
-				data: res,
-			});
-		});
-		console.log(this.props.match.url);
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&page='+ this.state.loadPage +'&limit=5&styleID='+this.state.styleMark + '&huxingID=' + this.state.houseTypeMark + '&areaID=' + this.state.areaMark ,myList).then(response => response.json()).then(res => callback(res));
+		console.log(`当前请求页数:${this.state.loadPage}`);
 	}
 	handleInfiniteOnLoad = () => {
 		let data = this.state.data;
 		this.setState({
 			loading: true,
+			loadPage: ++page
 		});
-		if (!data.length) {
-			message.warning('数据已全部加载完毕');
-			this.setState({
-				hasMore: false,
-				loading: false,
-			});
-			return;
-		}
 		this.getData((res) => {
+			console.log(`返回的数据:${res.length}`);
+			if (!res.length) {
+				message.warning('数据已全部加载完毕');
+				this.setState({
+					hasMore: false,
+					loading: false,
+				});
+				return;
+			}
 			data = data.concat(res);
 			this.setState({
 				data,
-				loading: false,
+				loading: false
 			});
+			console.log(`第几页:${page}`);
 		});
 	}
+
 	render() {
 		const { getFieldDecorator } = this.props.form;
 		const {housestyle} = this.state;
@@ -162,7 +224,7 @@ class NormalLoginForm extends Component {
 						<Col span={8}>
 							<Select
 								defaultValue="风格"
-								onChange={handleChange}
+								onChange={this.styleHandleChange}
 								style={{ width: '100%' }}
 							>
 								{housestyleListData}
@@ -171,7 +233,7 @@ class NormalLoginForm extends Component {
 						<Col span={8}>
 							<Select
 								defaultValue="户型"
-								onChange={handleChange}
+								onChange={this.houseTypeHandleChange}
 								style={{ width: '100%' }}
 							>
 								{housetypeListData}
@@ -180,7 +242,7 @@ class NormalLoginForm extends Component {
 						<Col span={8}>
 							<Select
 								defaultValue="面积"
-								onChange={handleChange}
+								onChange={this.areaHandleChange}
 								style={{ width: '100%' }}
 							>
 								{areaListData}
@@ -201,7 +263,7 @@ class NormalLoginForm extends Component {
 							dataSource={this.state.data}
 							renderItem={item => (
 								<List.Item key={item.id}>
-									{console.log(this.props.match.url)}
+									{/*{console.log(this.props.match.url)}*/}
 									<Link to={`/casehome/${item.id}`}>
 										<Card
 											hoverable
