@@ -41,7 +41,7 @@ class NormalLoginForm extends Component {
 		// 表单验证提交
 		this.props.form.validateFields((err, values) => {
 			// 传输其他必要数据
-			var otherData = {'cityID':8,'url':'/','orderTypeID':86};
+			var otherData = {'cityID':7,'url':'/','orderTypeID':86};
 			var obj = Object.assign(otherData,values);
 			if (!err) {
 				fetch('http://www.hejianzhiyang.com/Api/doOrder', {

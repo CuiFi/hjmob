@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SecondHeaderPart from '../index/SecondHeaderPart';
 
-class HotContent extends Component {
+class HotContentGo extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {listText:''};
@@ -11,15 +11,15 @@ class HotContent extends Component {
 		var myList = {
 			method:'GET'
 		};
-		fetch("http://www.hejianzhiyang.com/Api/getDataByid?sheet=build&id=" + this.props.match.params.id ,myList).then(response => response.json()).then(json => this.setState({listText:json}));
+		fetch("http://www.hejianzhiyang.com/Api/getDataByid?sheet=build&id=" + this.props.match.params.num ,myList).then(response => response.json()).then(json => this.setState({listText:json}));
 		console.log(this.props.match.url);
 		console.log(this.props.match.params);
-		console.log(this.props.match.params.id);
+		console.log(this.props.match.params.num);
 		console.log(this.props.match);
 	};
 
 	createMarkup() {
-		return { __html:this.state.listText.desc };
+		return { __html:this.state.listText.content };
 	};
 
 	render() {
@@ -43,4 +43,4 @@ class HotContent extends Component {
 	};
 }
 
-export default HotContent;
+export default HotContentGo;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import {Row, Col,Button,Carousel} from 'antd';
 
 class SixPart extends Component {
@@ -11,11 +12,7 @@ class SixPart extends Component {
 		var myslider = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=quanjing&limit=3',myslider).then(response => response.json()).then(json => this.setState({banner:json}));
-	};
-
-	createMarkup() {
-		return { __html:this.state.listText.content };
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=quanjing&recommendIndex=1&limit=3',myslider).then(response => response.json()).then(json => this.setState({banner:json}));
 	};
 
 
@@ -24,10 +21,29 @@ class SixPart extends Component {
 		const bannerList = banner.length
 			? banner.map((bannerItem, index) => (
 				<div key={bannerItem.id}>
-					<img src={"http://www.hejianzhiyang.com/Upload/"+bannerItem.imgName_380_209} alt={bannerItem.title} />
+					<a href={bannerItem.link}>
+						<img src={"http://www.hejianzhiyang.com/Upload/"+bannerItem.imgName_380_209} alt={bannerItem.title} />
+					</a>
 				</div>
 			))
 			: '没有加载到任何数据';
+
+		let bannerInHtml = '';
+		switch (banner.length){
+			case 1:
+				bannerInHtml = <Carousel autoplay><div>{bannerList[0]}</div></Carousel>;
+				break;
+			case 2:
+				bannerInHtml = <Carousel autoplay><div>{bannerList[0]}</div><div>{bannerList[1]}</div></Carousel>;
+				break;
+			case 3:
+				bannerInHtml = <Carousel autoplay><div>{bannerList[0]}</div><div>{bannerList[1]}</div><div>{bannerList[2]}</div></Carousel>;
+				break;
+			default:
+				bannerInHtml = <Carousel autoplay><div>{bannerList[0]}</div></Carousel>;
+				break;
+		}
+
 		return (
 			<div className="FourAddTwoBtn">
 				<Row>
@@ -37,18 +53,14 @@ class SixPart extends Component {
 				</Row>
 				<Row style={{marginBottom:'10px'}} gutter={10}>
 					<Col span={24}>
-						<Carousel autoplay>
-							<div>{bannerList[0]}</div>
-							<div>{bannerList[1]}</div>
-							<div>{bannerList[2]}</div>
-							{console.log(typeof bannerList)}
-							<div className="articleContainer" dangerouslySetInnerHTML={{__html:bannerList}}></div>
-						</Carousel>
+						{bannerInHtml}
 					</Col>
 				</Row>
 				<Row gutter={10}>
 					<Col span={24}>
-						<Button style={{width:'100%'}}>查看更多3D实景图>>></Button>
+						<Link to={`/threehome/`}>
+							<Button style={{width:'100%'}}>查看更多3D实景图>>></Button>
+						</Link>
 					</Col>
 				</Row>
 			</div>

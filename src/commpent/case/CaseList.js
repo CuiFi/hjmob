@@ -116,9 +116,9 @@ class NormalLoginForm extends Component {
 		var getoption = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&page=1&limit=5&styleID='+styleId + '&huxingID=' + this.state.houseTypeMark + '&areaID=' + this.state.areaMark,getoption).
-		then(response => response.json()).
-		then(json => this.setState({
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&page=1&limit=5&styleID='+styleId + '&huxingID=' + this.state.houseTypeMark + '&areaID=' + this.state.areaMark,getoption).then(
+			response => response.json()
+		).then(json => this.setState({
 			data:json,
 			styleMark:styleId
 		}));
@@ -128,9 +128,9 @@ class NormalLoginForm extends Component {
 		var getoption = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&page=1&limit=5&styleID='+this.state.styleMark + '&huxingID=' + huxingId + '&areaID=' + this.state.areaMark,getoption).
-		then(response => response.json()).
-		then(json => this.setState({
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&page=1&limit=5&styleID='+this.state.styleMark + '&huxingID=' + huxingId + '&areaID=' + this.state.areaMark,getoption).then(
+			response => response.json()
+		).then(json => this.setState({
 			data:json,
 			houseTypeMark:huxingId
 		}));
@@ -140,9 +140,9 @@ class NormalLoginForm extends Component {
 		var getoption = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&page=1&limit=5&styleID='+this.state.styleMark + '&huxingID=' + this.state.houseTypeMark + '&areaID=' + areaId,getoption).
-		then(response => response.json()).
-		then(json => this.setState({
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&page=1&limit=5&styleID='+this.state.styleMark + '&huxingID=' + this.state.houseTypeMark + '&areaID=' + areaId,getoption).then(
+			response => response.json()
+		).then(json => this.setState({
 			data:json,
 			areaMark:areaId
 		}));

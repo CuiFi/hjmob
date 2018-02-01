@@ -9,8 +9,7 @@ import InfiniteScroll from 'react-infinite-scroller';
 const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
 
-const fakeDataUrl = 'http://www.hejianzhiyang.com/Api/getDataByType?sheet=daquan&limit=';
-var page = 5;
+const fakeDataUrl = 'http://www.hejianzhiyang.com/Api/getDataByType?sheet=build&limit=5&page=1';
 
 function onChange(e) {
 	console.log(`radio checked:${e.target.value}`);
@@ -33,8 +32,7 @@ class HotListParent extends Component {
 			method:'GET'
 		};
 
-		fetch(fakeDataUrl+page ,myList).then(response => response.json()).then(res => callback(res));
-		page++;
+		fetch(fakeDataUrl ,myList).then(response => response.json()).then(res => callback(res));
 	}
 	componentWillMount() {
 		var myList = {
@@ -102,15 +100,15 @@ class HotListParent extends Component {
 										<Card
 											hoverable
 											style={{ width: '100%' }}
-											cover={<img alt="example" src={"http://www.hejianzhiyang.com/Upload/"+item.imgName_239_174} />}
+											cover={<img alt="example" src={"http://www.hejianzhiyang.com/Upload/"+item.imgName_348_238} />}
 										>
 											<Row align="middle" type="flex">
 												<Col span={20}>
-													<h3>{item.labelsName}</h3>
-													<p>{item.desc.slice(0,18)+'...'}</p>
+													<h3>{item.name}</h3>
+													<p>{item.desc.slice(3,18)+'...'}</p>
 												</Col>
 												<Col span={4}>
-													<Icon type="eye-o" /> {item.viewNum}
+													<Icon type="eye-o" /> {item.zixunInt}
 												</Col>
 											</Row>
 										</Card>

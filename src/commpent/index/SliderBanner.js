@@ -26,11 +26,24 @@ class SliderBanner extends Component {
         </div>
 			))
 			: '没有加载到任何数据';
+		let bannerInHtml = '';
+		switch (banner.length){
+			case 1:
+				bannerInHtml = <Carousel autoplay><div>{bannerList[0]}</div></Carousel>;
+				break;
+			case 2:
+				bannerInHtml = <Carousel autoplay><div>{bannerList[0]}</div><div>{bannerList[1]}</div></Carousel>;
+				break;
+			case 3:
+				bannerInHtml = <Carousel autoplay><div>{bannerList[0]}</div><div>{bannerList[1]}</div><div>{bannerList[2]}</div></Carousel>;
+				break;
+			default:
+				bannerInHtml = <Carousel autoplay><div>{bannerList[0]}</div></Carousel>;
+				break;
+		}
 		return (
       <Content style={{marginTop:'64px'}}>
-        <Carousel autoplay>
-          <div>{bannerList}</div>
-        </Carousel>
+	      {bannerInHtml}
       </Content>
 		);
 	}

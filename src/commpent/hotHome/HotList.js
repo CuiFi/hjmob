@@ -8,8 +8,8 @@ import InfiniteScroll from 'react-infinite-scroller';
 import { Select} from 'antd';
 const Option = Select.Option;
 
-const fakeDataUrl = 'http://www.hejianzhiyang.com/Api/getDataByType?sheet=daquan&limit=';
-var page = 5;
+
+//buildID=2从父级获取props
 
 function handleChange(value) {
 	console.log(`Selected: ${value}`);
@@ -32,8 +32,7 @@ class HotList extends Component {
 			method:'GET'
 		};
 
-		fetch(fakeDataUrl+page ,myList).then(response => response.json()).then(res => callback(res));
-		page++;
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=huxing&page=1&buildID=' + this.props.match.params.id ,myList).then(response => response.json()).then(res => callback(res));
 	}
 	componentWillMount() {
 		// 获取下拉选项风格数据
@@ -142,15 +141,15 @@ class HotList extends Component {
 										<Card
 											hoverable
 											style={{ width: '100%' }}
-											cover={<img alt="example" src={"http://www.hejianzhiyang.com/Upload/"+item.imgName_239_174} />}
+											cover={<img alt="example" src={"http://www.hejianzhiyang.com/Upload/"+item.imgName_380_209} />}
 										>
 											<Row align="middle" type="flex">
 												<Col span={20}>
-													<h3>{item.labelsName}</h3>
-													<p>{item.desc.slice(0,18)+'...'}</p>
+													<h3>{item.name}</h3>
+													<p>{item.desc.slice(3,18)+'...'}</p>
 												</Col>
 												<Col span={4}>
-													<Icon type="eye-o" /> {item.viewNum}
+													<Icon type="eye-o" /> {item.zixunInt}
 												</Col>
 											</Row>
 										</Card>
