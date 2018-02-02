@@ -11,7 +11,7 @@ class HotContent extends Component {
 		var myList = {
 			method:'GET'
 		};
-		fetch("http://www.hejianzhiyang.com/Api/getDataByid?sheet=build&id=" + this.props.match.params.id ,myList).then(response => response.json()).then(json => this.setState({listText:json}));
+		fetch("http://www.hejianzhiyang.com/Api/getDataByid?sheet=huxing&id=" + this.props.match.params.id ,myList).then(response => response.json()).then(json => this.setState({listText:json}));
 		console.log(this.props.match.url);
 		console.log(this.props.match.params);
 		console.log(this.props.match.params.id);
@@ -19,7 +19,7 @@ class HotContent extends Component {
 	};
 
 	createMarkup() {
-		return { __html:this.state.listText.desc };
+		return { __html:this.state.listText.silu };
 	};
 
 	render() {
@@ -33,9 +33,9 @@ class HotContent extends Component {
 		// 	: '没有加载到任何新闻';
 		return (
 			<div>
-				<SecondHeaderPart title={listText.name}/>
+				<SecondHeaderPart title={listText.buildName}/>
 				<div style={{paddingLeft:'10px',paddingRight:'10px',paddingTop:'64px'}}>
-					<h3>{listText.name}</h3>
+					<h3>{listText.buildName}</h3>
 					<div className="articleContainer" dangerouslySetInnerHTML={this.createMarkup()}></div>
 				</div>
 			</div>

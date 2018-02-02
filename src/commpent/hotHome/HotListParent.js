@@ -9,13 +9,11 @@ import InfiniteScroll from 'react-infinite-scroller';
 const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
 
-const fakeDataUrl = 'http://www.hejianzhiyang.com/Api/getDataByType?sheet=build&limit=5&page=1';
-
 function onChange(e) {
 	console.log(`radio checked:${e.target.value}`);
 }
 
-
+var page = 1;
 
 class HotListParent extends Component {
 	constructor(props){
@@ -25,21 +23,17 @@ class HotListParent extends Component {
 			radiodata: [],
 			loading: false,
 			hasMore: true,
+			loadPage:1
 		};
-	}
-	getData = (callback) => {
-		var myList = {
-			method:'GET'
-		};
-
-		fetch(fakeDataUrl ,myList).then(response => response.json()).then(res => callback(res));
 	}
 	componentWillMount() {
+		//获取区域选项
 		var myList = {
 			method:'GET'
 		};
 		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=qu&cityID=7&page=1&limit=20',myList).then(response => response.json()).then(json => this.setState({radiodata:json}));
 
+		// 获取第一页
 		this.getData((res) => {
 			this.setState({
 				data: res,
@@ -47,20 +41,32 @@ class HotListParent extends Component {
 		});
 		console.log(this.props.match.url);
 	}
+
+	getData = (callback) => {
+		var myList = {
+			method:'GET'
+		};
+
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=build&limit=5&page='+ this.state.loadPage ,myList).then(response => response.json()).then(res => callback(res));
+		console.log(`当前请求页数:${this.state.loadPage}`);
+	}
+
 	handleInfiniteOnLoad = () => {
 		let data = this.state.data;
 		this.setState({
 			loading: true,
+			loadPage: ++page
 		});
-		if (!data.length) {
-			message.warning('数据已全部加载完毕');
-			this.setState({
-				hasMore: false,
-				loading: false,
-			});
-			return;
-		}
+
 		this.getData((res) => {
+			if (!res.length) {
+				message.warning('数据已全部加载完毕');
+				this.setState({
+					hasMore: false,
+					loading: false,
+				});
+				return;
+			}
 			data = data.concat(res);
 			this.setState({
 				data,

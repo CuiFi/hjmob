@@ -11,9 +11,7 @@ const Option = Select.Option;
 
 //buildID=2从父级获取props
 
-function handleChange(value) {
-	console.log(`Selected: ${value}`);
-}
+var page = 1;
 
 class HotList extends Component {
 	constructor(props){
@@ -25,16 +23,20 @@ class HotList extends Component {
 			housestyle: [],
 			loading: false,
 			hasMore: true,
+			styleMark:'',
+			houseTypeMark:'',
+			areaMark:'',
+			loadPage:1
 		};
 	}
 	getData = (callback) => {
 		var myList = {
 			method:'GET'
 		};
-
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=huxing&page=1&buildID=' + this.props.match.params.id ,myList).then(response => response.json()).then(res => callback(res));
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=huxing&page=' + this.state.loadPage + '&limit=5&styleID='+this.state.styleMark + '&huxingID=' + this.state.houseTypeMark + '&areaID=' + this.state.areaMark +'&buildID=' + this.props.match.params.id ,myList).then(response => response.json()).then(res => callback(res));
 	}
 	componentWillMount() {
+		console.log(this.props.match.params.id);
 		// 获取下拉选项风格数据
 		var getoption = {
 			method:'GET'
@@ -55,20 +57,80 @@ class HotList extends Component {
 		});
 		console.log(this.props.match.url);
 	}
+
+	// 风格选择数据
+	getStyleData = (styleId) => {
+		var getoption = {
+			method:'GET'
+		};
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&page=1&limit=5&styleID='+styleId + '&huxingID=' + this.state.houseTypeMark + '&areaID=' + this.state.areaMark,getoption).then(
+			response => response.json()
+		).then(json => this.setState({
+			data:json,
+			styleMark:styleId
+		}));
+	}
+	// 户型选择数据
+	getHouseData = (huxingId) => {
+		var getoption = {
+			method:'GET'
+		};
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&page=1&limit=5&styleID='+this.state.styleMark + '&huxingID=' + huxingId + '&areaID=' + this.state.areaMark,getoption).then(
+			response => response.json()
+		).then(json => this.setState({
+			data:json,
+			houseTypeMark:huxingId
+		}));
+	}
+	// 面积选择数据
+	getAreaData = (areaId) => {
+		var getoption = {
+			method:'GET'
+		};
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&page=1&limit=5&styleID='+this.state.styleMark + '&huxingID=' + this.state.houseTypeMark + '&areaID=' + areaId,getoption).then(
+			response => response.json()
+		).then(json => this.setState({
+			data:json,
+			areaMark:areaId
+		}));
+	}
+	styleHandleChange = (value) => {
+		console.log(`风格: ${value}`);
+		this.getStyleData(value);
+		console.log(this.state.styleMark);
+		console.log(this.state.houseTypeMark);
+		console.log(this.state.areaMark);
+	}
+	houseTypeHandleChange = (value) => {
+		console.log(`户型: ${value}`);
+		this.getHouseData(value);
+		console.log(this.state.styleMark);
+		console.log(this.state.houseTypeMark);
+		console.log(this.state.areaMark);
+	}
+	areaHandleChange = (value) => {
+		console.log(`面积: ${value}`);
+		this.getAreaData(value);
+		console.log(this.state.styleMark);
+		console.log(this.state.houseTypeMark);
+		console.log(this.state.areaMark);
+	}
+
 	handleInfiniteOnLoad = () => {
 		let data = this.state.data;
 		this.setState({
 			loading: true,
+			loadPage: ++page
 		});
-		if (!data.length) {
-			message.warning('数据已全部加载完毕');
-			this.setState({
-				hasMore: false,
-				loading: false,
-			});
-			return;
-		}
 		this.getData((res) => {
+			if (!res.length) {
+				message.warning('数据已全部加载完毕');
+				this.setState({
+					hasMore: false,
+					loading: false,
+				});
+				return;
+			}
 			data = data.concat(res);
 			this.setState({
 				data,
@@ -97,7 +159,7 @@ class HotList extends Component {
 						<Col span={8}>
 							<Select
 								defaultValue="风格"
-								onChange={handleChange}
+								onChange={this.styleHandleChange}
 								style={{ width: '100%' }}
 							>
 								{housestyleListData}
@@ -106,7 +168,7 @@ class HotList extends Component {
 						<Col span={8}>
 							<Select
 								defaultValue="户型"
-								onChange={handleChange}
+								onChange={this.houseTypeHandleChange}
 								style={{ width: '100%' }}
 							>
 								{housetypeListData}
@@ -115,7 +177,7 @@ class HotList extends Component {
 						<Col span={8}>
 							<Select
 								defaultValue="面积"
-								onChange={handleChange}
+								onChange={this.areaHandleChange}
 								style={{ width: '100%' }}
 							>
 								{areaListData}
@@ -145,11 +207,12 @@ class HotList extends Component {
 										>
 											<Row align="middle" type="flex">
 												<Col span={20}>
-													<h3>{item.name}</h3>
-													<p>{item.desc.slice(3,18)+'...'}</p>
+													<h3>{item.buildName}</h3>
+													{/*<p>{item.desc.slice(3,18)+'...'}</p>*/}
+													<p>{item.styleName +' | '+ item.huxingName + ' | ' + item.area + 'M²'}</p>
 												</Col>
 												<Col span={4}>
-													<Icon type="eye-o" /> {item.zixunInt}
+													<Icon type="eye-o" /> {item.viewNum}
 												</Col>
 											</Row>
 										</Card>
