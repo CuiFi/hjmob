@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import {Row, Col,Button,Card,Avatar } from 'antd';
 import point01 from '../../img/point_01.png';
 import point02 from '../../img/point_02.png';
@@ -61,7 +62,9 @@ class TenPart extends Component {
 				</Row>
 				<Row gutter={10}>
 					<Col span={24}>
-						<Button type="primary" style={{width:'100%'}}>查看更多装修指南>>></Button>
+						<Link to={`/details/`}>
+							<Button type="primary" style={{width:'100%'}}>查看更多装修指南>>></Button>
+						</Link>
 					</Col>
 				</Row>
 			</div>

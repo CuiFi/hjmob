@@ -112,7 +112,15 @@ img{
 .DropdownBtn .ant-select-selection{
   border-radius: 0;
 }
-
+.DetailsList a{
+  color: #000;
+}
+.DetailsList p{
+  font-size: 12px;
+}
+.DetailsList h4{
+  margin-bottom: 3px;
+}
 
 
 

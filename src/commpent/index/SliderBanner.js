@@ -22,7 +22,9 @@ class SliderBanner extends Component {
 		const bannerList = banner.length
 			? banner.map((bannerItem, index) => (
         <div key={bannerItem.id}>
-          <img src={"http://www.hejianzhiyang.com/Upload/"+bannerItem.imgName_884_359} alt={bannerItem.title} />
+	        <a href={bannerItem.link}>
+		        <img src={"http://www.hejianzhiyang.com/Upload/"+bannerItem.imgName_884_359} alt={bannerItem.title} />
+	        </a>
         </div>
 			))
 			: '没有加载到任何数据';

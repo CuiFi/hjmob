@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SecondHeaderPart from '../index/SecondHeaderPart';
 
-class HotContent extends Component {
+class CaseContent extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {listText:''};
@@ -11,7 +11,7 @@ class HotContent extends Component {
 		var myList = {
 			method:'GET'
 		};
-		fetch("http://www.hejianzhiyang.com/Api/getDataByid?sheet=huxing&id=" + this.props.match.params.id ,myList).then(response => response.json()).then(json => this.setState({listText:json}));
+		fetch("http://www.hejianzhiyang.com/Api/getDataByid?sheet=about&id=1",myList).then(response => response.json()).then(json => this.setState({listText:json}));
 		console.log(this.props.match.url);
 		console.log(this.props.match.params);
 		console.log(this.props.match.params.id);
@@ -19,7 +19,7 @@ class HotContent extends Component {
 	};
 
 	createMarkup() {
-		return { __html:this.state.listText.silu + this.state.listText.cailiao + this.state.listText.content };
+		return { __html:this.state.listText.content };
 	};
 
 	render() {
@@ -33,9 +33,9 @@ class HotContent extends Component {
 		// 	: '没有加载到任何新闻';
 		return (
 			<div>
-				<SecondHeaderPart title={listText.buildName}/>
+				<SecondHeaderPart title={listText.title}/>
 				<div style={{paddingLeft:'10px',paddingRight:'10px',paddingTop:'64px'}}>
-					<h2>{listText.buildName}</h2>
+					{/*<h3>{listText.title}</h3>*/}
 					<div className="articleContainer" dangerouslySetInnerHTML={this.createMarkup()}></div>
 				</div>
 			</div>
@@ -43,4 +43,4 @@ class HotContent extends Component {
 	};
 }
 
-export default HotContent;
+export default CaseContent;

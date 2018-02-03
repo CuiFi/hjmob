@@ -28,7 +28,7 @@ class HotListParent extends Component {
 		var myList = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=qu&cityID=7&page=1&limit=20',myList).then(response => response.json()).then(json => this.setState({radiodata:json}));
+		fetch('http://www.hejianzhiyang.com/Api/selectDictionary?datatypeID=49',myList).then(response => response.json()).then(json => this.setState({radiodata:json}));
 
 		// 获取第一页
 		this.getData((res) => {
@@ -63,7 +63,7 @@ class HotListParent extends Component {
 			method:'GET'
 		};
 
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=build&limit=5&quID='+this.state.quId+'&page='+ this.state.loadPage ,myList).then(response => response.json()).then(res => callback(res));
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=daquan&limit=5'+ this.state.loadPage ,myList).then(response => response.json()).then(res => callback(res));
 		console.log(`当前请求页数:${this.state.loadPage}`);
 	}
 
@@ -94,17 +94,17 @@ class HotListParent extends Component {
 	render() {
 		const {radiodata} = this.state;
 		const radiodataList = radiodata.map((radiodataItem, index) => (
-			<Col span={6} key={radiodataItem.id}>
-				<RadioButton value={radiodataItem.id} style={{width:'90%',textAlign:'center',marginBottom:'5px'}}>{radiodataItem.name}</RadioButton>
+			<Col span={4} key={radiodataItem.id}>
+				<RadioButton value={radiodataItem.id} style={{width:'90%',textAlign:'center',marginBottom:'5px'}}>{radiodataItem.dataName}</RadioButton>
 			</Col>
 		));
 		return (
-			<div className="HotListParent">
-				<SecondHeaderPart title="热装小区"/>
+			<div className="HotListParent DetailsList">
+				<SecondHeaderPart title="装修指南"/>
 				<div className="HotList">
 					<RadioGroup style={{paddingTop:'64px'}} onChange={this.onChange} defaultValue="a" size="small">
 						<Row>
-							{radiodataList}
+							{radiodataList.slice(2)}
 						</Row>
 					</RadioGroup>
 					<InfiniteScroll
@@ -120,21 +120,16 @@ class HotListParent extends Component {
 							renderItem={item => (
 								<List.Item key={item.id}>
 									<Link to={`/hothome/${item.id}/list/`}>
-										<Card
-											hoverable
-											style={{ width: '100%' }}
-											cover={<img alt="example" src={"http://www.hejianzhiyang.com/Upload/"+item.imgName_348_238} />}
-										>
-											<Row align="middle" type="flex">
-												<Col span={20}>
-													<h3>{item.name}</h3>
-													<p>{item.desc.slice(3,18)+'...'}</p>
-												</Col>
-												<Col span={4}>
-													<Icon type="eye-o" /> {item.zixunInt}
-												</Col>
-											</Row>
-										</Card>
+										<Row gutter={10}>
+											<Col span={9}>
+												<img src={"http://www.hejianzhiyang.com/Upload/"+item.imgName_239_174} alt="img"/>
+											</Col>
+											<Col span={15}>
+												<h4>{item.title.length > 12 ? item.title.slice(0,12)+'...' : item.title}</h4>
+												{console.log(item.title.length)}
+												<p>{item.desc.slice(0,36)+'...'}</p>
+											</Col>
+										</Row>
 									</Link>
 								</List.Item>
 							)}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import {Row, Col} from 'antd';
 import anli from '../../img/anli.png';
 import active from '../../img/active.png';
@@ -25,16 +26,24 @@ class NinePage extends Component {
 		return (
 			<div className="NineIcon">
 				<Row>
-					<PartBox text="装修案例" img={anli}/>
+					<Link to={`/casehome/`}>
+						<PartBox text="装修案例" img={anli}/>
+					</Link>
 					<PartBox text="活动优惠" img={active}/>
 					<PartBox text="设计师" img={deg}/>
 					<PartBox text="装修指南" img={point}/>
 				</Row>
 				<Row>
-					<PartBox text="3D全景" img={three}/>
+					<Link to={`/threehome/`}>
+						<PartBox text="3D全景" img={three}/>
+					</Link>
 					<PartBox text="工艺展示" img={show}/>
-					<PartBox text="热装小区" img={hot}/>
-					<PartBox text="关于合建" img={about}/>
+					<Link to={`/hothome/`}>
+						<PartBox text="热装小区" img={hot}/>
+					</Link>
+					<Link to={`/about/`}>
+						<PartBox text="关于合建" img={about}/>
+					</Link>
 				</Row>
 			</div>
 		);
