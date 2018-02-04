@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import SecondHeaderPart from '../index/SecondHeaderPart';
 import {Link} from 'react-router-dom';
-import { List, Icon} from 'antd';
-import { Row, Col,Card} from 'antd';
+import { List} from 'antd';
+import { Row, Col} from 'antd';
 import { message, Spin} from 'antd';
 import { Radio } from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';
@@ -19,18 +19,19 @@ class HotListParent extends Component {
 			radiodata: [],
 			loading: false,
 			hasMore: true,
-			quId:'',
+			quId: '',
 			loadPage:1
 		};
 	}
 	componentWillMount() {
-		//获取区域选项
+		//获取种类选项
 		var myList = {
 			method:'GET'
 		};
 		fetch('http://www.hejianzhiyang.com/Api/selectDictionary?datatypeID=49',myList).then(response => response.json()).then(json => this.setState({radiodata:json}));
 
 		// 获取第一页
+		console.log(this.props.location.query);
 		this.getData((res) => {
 			this.setState({
 				data: res,
@@ -39,12 +40,12 @@ class HotListParent extends Component {
 		console.log(this.props.match.url);
 	}
 
-	// 获取区域筛选方法
+	// 筛选方法
 	getQuData = (quid) => {
 		var myList = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=build&limit=5&quID=' + quid +'&page='+ this.state.loadPage ,myList).then(response => response.json()).then(json => this.setState({data:json}));
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=daquan&limit=5&typeID=' + quid +'&page='+ this.state.loadPage ,myList).then(response => response.json()).then(json => this.setState({data:json}));
 		console.log(`当前请求页数:${this.state.loadPage}`);
 	}
 
@@ -53,17 +54,19 @@ class HotListParent extends Component {
 		this.setState({
 			quId:e.target.value,
 			loadPage:1
+		},()=>{
+			this.getQuData(e.target.value);
+			console.log(e.target.value);
 		});
-		this.getQuData(e.target.value);
 	}
 
-	// 滚动加载数据时所用的方法,对获取到的数据进行回调函数处理
+	// 获取第一页和滚动加载数据时所用的方法,对获取到的数据进行回调函数处理
 	getData = (callback) => {
 		var myList = {
 			method:'GET'
 		};
 
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=daquan&limit=5'+ this.state.loadPage ,myList).then(response => response.json()).then(res => callback(res));
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=daquan&limit=5&typeID=' + this.state.quId + '&page=' + this.state.loadPage ,myList).then(response => response.json()).then(res => callback(res));
 		console.log(`当前请求页数:${this.state.loadPage}`);
 	}
 
@@ -91,6 +94,7 @@ class HotListParent extends Component {
 			});
 		});
 	}
+
 	render() {
 		const {radiodata} = this.state;
 		const radiodataList = radiodata.map((radiodataItem, index) => (
@@ -106,6 +110,8 @@ class HotListParent extends Component {
 						<Row>
 							{radiodataList.slice(2)}
 						</Row>
+						{/*{console.log(this.props.location.query)}*/}
+						{/*{console.log(this.props.location.query.id)}*/}
 					</RadioGroup>
 					<InfiniteScroll
 						initialLoad={false}
@@ -119,14 +125,13 @@ class HotListParent extends Component {
 							dataSource={this.state.data}
 							renderItem={item => (
 								<List.Item key={item.id}>
-									<Link to={`/hothome/${item.id}/list/`}>
+									<Link to={`/details/${item.id}`}>
 										<Row gutter={10}>
 											<Col span={9}>
 												<img src={"http://www.hejianzhiyang.com/Upload/"+item.imgName_239_174} alt="img"/>
 											</Col>
 											<Col span={15}>
 												<h4>{item.title.length > 12 ? item.title.slice(0,12)+'...' : item.title}</h4>
-												{console.log(item.title.length)}
 												<p>{item.desc.slice(0,36)+'...'}</p>
 											</Col>
 										</Row>

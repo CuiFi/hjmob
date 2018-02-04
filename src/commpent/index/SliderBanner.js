@@ -44,7 +44,7 @@ class SliderBanner extends Component {
 				break;
 		}
 		return (
-      <Content style={{marginTop:'64px'}}>
+      <Content style={{paddingTop:'64px'}}>
 	      {bannerInHtml}
       </Content>
 		);

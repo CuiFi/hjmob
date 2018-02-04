@@ -18,6 +18,7 @@ import point14 from '../../img/point_14.png';
 
 class ColInCard extends Component{
 	render(){
+
 		return(
 			<Col span={this.props.line}>
 				<Card style={{ width: '100%' }}>
@@ -39,7 +40,9 @@ class TenPart extends Component {
 					</Col>
 				</Row>
 				<Row style={{marginBottom:'10px',textAlign:'center'}}>
-					<ColInCard line={6} img={point01} text="量房"/>
+					<Link to={{pathname:'/details/',query:{id:52}}}>
+						<ColInCard line={6} img={point01} text="量房"/>
+					</Link>
 					<ColInCard line={6} img={point02} text="设计"/>
 					<ColInCard line={6} img={point03} text="预算"/>
 					<ColInCard line={6} img={point04} text="合同"/>
