@@ -32,12 +32,20 @@ class DetailsList extends Component {
 
 		// 获取第一页
 		// console.log(this.props.location.query);
-		// var parentId = this.props.location.query.id;
-		this.getData((res) => {
-			this.setState({
-				data: res,
+		var parentId = this.props.location.query.id;
+		if (parentId){
+			this.getParentData((res) => {
+				this.setState({
+					data: res,
+				});
+			},parentId);
+		}else {
+			this.getData((res) => {
+				this.setState({
+					data: res,
+				});
 			});
-		});
+		}
 
 		// console.log(this.props.match.url);
 	}
@@ -60,6 +68,16 @@ class DetailsList extends Component {
 			this.getQuData(e.target.value);
 			// console.log(e.target.value);
 		});
+	}
+
+	// 获取第一页和滚动加载数据时所用的方法,对获取到的数据进行回调函数处理
+	getParentData = (callback,parentPropsId) => {
+		var myList = {
+			method:'GET'
+		};
+
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=daquan&limit=5&typeID=' + parentPropsId + '&page=' + this.state.loadPage ,myList).then(response => response.json()).then(res => callback(res));
+		console.log(`当前请求页数:${this.state.loadPage}`);
 	}
 
 	// 获取第一页和滚动加载数据时所用的方法,对获取到的数据进行回调函数处理

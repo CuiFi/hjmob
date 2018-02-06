@@ -9,7 +9,7 @@ import SixPart from './SixPart';
 import SevenPart from './SevenPart';
 import EightPart from './EightPart';
 import TenPart from './TenPart';
-import ElevenPart from './ElevenPart';
+// import ElevenPart from './ElevenPart';
 import TwelvePart from './TwelvePart';
 import ThirteenPart from './ThirteenPart';
 
@@ -31,8 +31,8 @@ class IndexContainer extends Component {
 				<EightPart/>
 				<Divider style={{height:"10px",margin:"5px 0"}}/>
 				<TenPart/>
-				<Divider style={{height:"10px",margin:"5px 0"}}/>
-				<ElevenPart/>
+				{/*<Divider style={{height:"10px",margin:"5px 0"}}/>*/}
+				{/*<ElevenPart/>*/}
 				<Divider style={{height:"10px",margin:"5px 0"}}/>
 				<TwelvePart limit="10"/>
 				<Divider style={{height:"10px",margin:"5px 0"}}/>

@@ -39,8 +39,17 @@ class SecondHeaderPart extends Component {
 	        <Link id="home" className="menu-item" to={`/hothome/`}>
 		        热装小区
 	        </Link>
-	        <Link id="home" className="menu-item" to={`/casehome/`}>
+	        <Link id="casehome" className="menu-item" to={`/casehome/`}>
 		        装修案例
+	        </Link>
+	        <Link id="casehome" className="menu-item" to={`/casehome/`}>
+		        设计师
+	        </Link>
+	        <Link id="casehome" className="menu-item" to={`/threehome/`}>
+		        3D全景
+	        </Link>
+	        <Link id="casehome" className="menu-item" to={`/about/`}>
+		        关于我们
 	        </Link>
         </Menua>
 

@@ -8,10 +8,10 @@ const { Header } = Layout;
 const menu = (
   <Menu>
     <Menu.Item key="0">
-      <a href="http://www.alipay.com/">南京</a>
+      <a href="http://www.hejianzhiyang.com/">南京</a>
     </Menu.Item>
     <Menu.Item key="1">
-      <a href="http://www.taobao.com/">武汉</a>
+      <a href="http://www.hejianzhiyang.com/">武汉</a>
     </Menu.Item>
   </Menu>
 );
@@ -49,6 +49,15 @@ class HeaderPart extends Component {
 	        </Link>
 	        <Link id="casehome" className="menu-item" to={`/casehome/`}>
 		        装修案例
+	        </Link>
+	        <Link id="casehome" className="menu-item" to={`/casehome/`}>
+		        设计师
+	        </Link>
+	        <Link id="casehome" className="menu-item" to={`/threehome/`}>
+		        3D全景
+	        </Link>
+	        <Link id="casehome" className="menu-item" to={`/about/`}>
+		        关于我们
 	        </Link>
         </Menua>
 

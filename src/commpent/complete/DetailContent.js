@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SecondHeaderPart from '../index/SecondHeaderPart';
 
+//暂时没用
 class DetailContent extends Component {
 	constructor(props) {
 		super(props);

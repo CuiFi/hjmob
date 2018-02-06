@@ -21,10 +21,12 @@ class ColInCard extends Component{
 
 		return(
 			<Col span={this.props.line}>
-				<Card style={{ width: '100%' }}>
-					<Avatar style={{ backgroundColor: '#fff' }} shape="square" src={this.props.img} />
-					<h2>{this.props.text}</h2>
-				</Card>
+				<Link to={`/details/`}>
+					<Card style={{ width: '100%' }}>
+						<Avatar style={{ backgroundColor: '#fff' }} shape="square" src={this.props.img} />
+						<h2>{this.props.text}</h2>
+					</Card>
+				</Link>
 			</Col>
 		);
 	}
@@ -40,9 +42,7 @@ class TenPart extends Component {
 					</Col>
 				</Row>
 				<Row style={{marginBottom:'10px',textAlign:'center'}}>
-					<Link to={{pathname:'/details/',query:{id:52}}}>
-						<ColInCard line={6} img={point01} text="量房"/>
-					</Link>
+					<ColInCard line={6} img={point01} text="量房"/>
 					<ColInCard line={6} img={point02} text="设计"/>
 					<ColInCard line={6} img={point03} text="预算"/>
 					<ColInCard line={6} img={point04} text="合同"/>

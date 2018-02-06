@@ -11,7 +11,6 @@ import HotListParent from './commpent/hotHome/HotListParent';
 import CaseList from './commpent/case/CaseList';
 import AboutContent from './commpent/about/AboutContent';
 import DetailsList from './commpent/complete/DetailsList';
-import DetailContent from './commpent/complete/DetailContent';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
