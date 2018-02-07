@@ -30,7 +30,9 @@ class NinePage extends Component {
 						<PartBox text="装修案例" img={anli}/>
 					</Link>
 					<PartBox text="活动优惠" img={active}/>
-					<PartBox text="设计师" img={deg}/>
+					<Link to={`/deg/`}>
+						<PartBox text="设计师" img={deg}/>
+					</Link>
 					<Link to={`/details/`}>
 						<PartBox text="装修指南" img={point}/>
 					</Link>

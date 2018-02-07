@@ -121,7 +121,9 @@ img{
 .DetailsList h4{
   margin-bottom: 3px;
 }
-
+.DegList .ant-list-vertical .ant-list-item-content{
+  margin-bottom: 2px;
+}
 
 
 

@@ -11,6 +11,8 @@ import HotListParent from './commpent/hotHome/HotListParent';
 import CaseList from './commpent/case/CaseList';
 import AboutContent from './commpent/about/AboutContent';
 import DetailsList from './commpent/complete/DetailsList';
+import DegList from './commpent/deg/DegList';
+import DegContent from './commpent/deg/DegContent';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -34,6 +36,9 @@ export default class Root extends Component{
 						<Route path="/threehome/" component={ThreeList}></Route>
 
 						<Route path="/about/" component={AboutContent}></Route>
+
+						<Route path="/deg/:id" component={DegContent}></Route>
+						<Route path="/deg/" component={DegList}></Route>
 					</Switch>
 				</HashRouter>
 			</div>
