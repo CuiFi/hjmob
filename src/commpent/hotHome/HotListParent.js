@@ -4,10 +4,9 @@ import {Link} from 'react-router-dom';
 import { List, Icon} from 'antd';
 import { Row, Col,Card} from 'antd';
 import { message, Spin} from 'antd';
-import { Radio } from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';
-const RadioButton = Radio.Button;
-const RadioGroup = Radio.Group;
+import RadioButton from "antd/es/radio/radioButton";
+import RadioGroup from "antd/es/radio/group";
 
 var page = 1;
 

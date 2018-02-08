@@ -124,6 +124,14 @@ img{
 .DegList .ant-list-vertical .ant-list-item-content{
   margin-bottom: 2px;
 }
+.Interfix .ant-card-body{
+  padding: 0 0 0 5px;
+}
+.Interfix h5{
+  margin-top: .5em;
+}
+
+
 
 
 
