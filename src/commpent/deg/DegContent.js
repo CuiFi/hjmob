@@ -27,13 +27,6 @@ class DegContent extends Component {
 
 	render() {
 		const {listText} = this.state;
-		// const newsList = listText.length
-		// 	? listText.map((newsItem, index) => (
-		// 		<li key={index}>
-		// 			<div class="articleContainer" dangerouslySetInnerHTML={this.createMarkup()}></div>
-		// 		</li>
-		// 	))
-		// 	: '没有加载到任何新闻';
 		const {itemImg} = this.state;
 		const itemList = itemImg.length
 			? itemImg.map((imgItem, index) => (

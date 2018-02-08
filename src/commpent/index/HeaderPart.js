@@ -5,24 +5,56 @@ import { slide as Menua } from 'react-burger-menu';
 import logo from '../../img/logo.png';
 const { Header } = Layout;
 
-const menu = (
-  <Menu>
-    <Menu.Item key="0">
-      <a href="http://www.hejianzhiyang.com/">南京</a>
-    </Menu.Item>
+const onClick = function ({key}) {
+	console.log(key)
+};
+
+const menuBJ = (
+  <Menu onClick={onClick}>
     <Menu.Item key="1">
-      <a href="http://www.hejianzhiyang.com/">武汉</a>
+      南京
+    </Menu.Item>
+    <Menu.Item key="2">
+      武汉
     </Menu.Item>
   </Menu>
 );
+
+const menuNJ = (
+	<Menu onClick={onClick}>
+		<Menu.Item key="0">
+			北京
+		</Menu.Item>
+		<Menu.Item key="2">
+			武汉
+		</Menu.Item>
+	</Menu>
+);
+
+const menuWH = (
+	<Menu onClick={onClick}>
+		<Menu.Item key="0">
+			北京
+		</Menu.Item>
+		<Menu.Item key="1">
+			南京
+		</Menu.Item>
+	</Menu>
+);
+
 
 class HeaderPart extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			menuOpen: false
+			menuOpen: false,
+			menuData:menuWH
 		}
 	}
+
+	onClick = ({key}) => {
+		console.log(key);
+	};
 
 	// 保持状态的同步,如果少了此方法,怎会造成弹出框,下拉加载,侧边栏完全混乱
 	handleStateChange = (state) => {
@@ -38,6 +70,7 @@ class HeaderPart extends Component {
 	}
 
 	render() {
+		const {menuData} = this.state;
 		return(
       <div id="outer-container">
         <Menua onStateChange={this.handleStateChange} width={'60%'} right isOpen={this.state.menuOpen} pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" }>
@@ -50,7 +83,7 @@ class HeaderPart extends Component {
 	        <Link id="casehome" className="menu-item" to={`/casehome/`}>
 		        装修案例
 	        </Link>
-	        <Link id="casehome" className="menu-item" to={`/casehome/`}>
+	        <Link id="casehome" className="menu-item" to={`/deg/`}>
 		        设计师
 	        </Link>
 	        <Link id="casehome" className="menu-item" to={`/threehome/`}>
@@ -68,7 +101,7 @@ class HeaderPart extends Component {
                 <img style={{width:'120px'}} src={logo} alt=""/>
               </Col>
               <Col span={4}>
-                <Dropdown overlay={menu} trigger={['click']}>
+                <Dropdown overlay={menuData} trigger={['click']}>
                   <a className="ant-dropdown-link" href="/">
                     北京<Icon type="environment" />
                   </a>

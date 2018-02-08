@@ -42,7 +42,7 @@ class SecondHeaderPart extends Component {
 	        <Link id="casehome" className="menu-item" to={`/casehome/`}>
 		        装修案例
 	        </Link>
-	        <Link id="casehome" className="menu-item" to={`/casehome/`}>
+	        <Link id="casehome" className="menu-item" to={`/deg/`}>
 		        设计师
 	        </Link>
 	        <Link id="casehome" className="menu-item" to={`/threehome/`}>
