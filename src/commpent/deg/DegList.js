@@ -268,7 +268,6 @@ class NormalLoginForm extends Component {
 										<Card
 											hoverable
 											style={{ width: '100%' }}
-
 										>
 											<Row align="middle" type="flex">
 												<Col span={4}>
