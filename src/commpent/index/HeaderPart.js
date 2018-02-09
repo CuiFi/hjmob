@@ -5,55 +5,96 @@ import { slide as Menua } from 'react-burger-menu';
 import logo from '../../img/logo.png';
 const { Header } = Layout;
 
-const onClick = function ({key}) {
-	console.log(key)
-};
-
-const menuBJ = (
-  <Menu onClick={onClick}>
-    <Menu.Item key="1">
-      南京
-    </Menu.Item>
-    <Menu.Item key="2">
-      武汉
-    </Menu.Item>
-  </Menu>
-);
-
-const menuNJ = (
-	<Menu onClick={onClick}>
-		<Menu.Item key="0">
-			北京
-		</Menu.Item>
-		<Menu.Item key="2">
-			武汉
-		</Menu.Item>
-	</Menu>
-);
-
-const menuWH = (
-	<Menu onClick={onClick}>
-		<Menu.Item key="0">
-			北京
-		</Menu.Item>
-		<Menu.Item key="1">
-			南京
-		</Menu.Item>
-	</Menu>
-);
-
 
 class HeaderPart extends Component {
+
 	constructor(props){
 		super(props);
 		this.state = {
 			menuOpen: false,
-			menuData:menuWH
+			menuDisplay:<a className="ant-dropdown-link" href="/">
+				北京<Icon type="environment" />
+			</a>,
+			menuData:<Menu onClick={this.onClick}>
+				<Menu.Item key="1">
+					南京
+				</Menu.Item>
+				<Menu.Item key="2">
+					武汉
+				</Menu.Item>
+			</Menu>,
+			cityIdState:localStorage.cityID
 		}
 	}
 
+
 	onClick = ({key}) => {
-		console.log(key);
+		switch (parseInt(key)){
+			case 0:
+				this.setState({
+					menuData:<Menu onClick={this.onClick}>
+						<Menu.Item key="1">
+							南京
+						</Menu.Item>
+						<Menu.Item key="2">
+							武汉
+						</Menu.Item>
+					</Menu>,
+					menuDisplay:<a className="ant-dropdown-link" href="/">
+						北京<Icon type="environment" />
+					</a>
+				});
+				localStorage.cityID = 7;
+				break;
+			case 1:
+				this.setState({
+					menuData:<Menu onClick={this.onClick}>
+						<Menu.Item key="0">
+							北京
+						</Menu.Item>
+						<Menu.Item key="2">
+							武汉
+						</Menu.Item>
+					</Menu>,
+					menuDisplay:<a className="ant-dropdown-link" href="/">
+						南京<Icon type="environment" />
+					</a>
+				});
+				localStorage.cityID = 9;
+				break;
+			case 2:
+				this.setState({
+					menuData:<Menu onClick={this.onClick}>
+						<Menu.Item key="0">
+							北京
+						</Menu.Item>
+						<Menu.Item key="1">
+							南京
+						</Menu.Item>
+					</Menu>,
+					menuDisplay:<a className="ant-dropdown-link" href="/">
+						武汉<Icon type="environment" />
+					</a>
+				});
+				localStorage.cityID = 8;
+				break;
+			default:
+				this.setState({
+					menuData:<Menu onClick={this.onClick}>
+						<Menu.Item key="1">
+							南京
+						</Menu.Item>
+						<Menu.Item key="2">
+							武汉
+						</Menu.Item>
+					</Menu>,
+					menuDisplay:<a className="ant-dropdown-link" href="/">
+						北京<Icon type="environment" />
+					</a>
+				});
+				localStorage.cityID = 7;
+				break;
+		}
 	};
 
 	// 保持状态的同步,如果少了此方法,怎会造成弹出框,下拉加载,侧边栏完全混乱
@@ -70,7 +111,8 @@ class HeaderPart extends Component {
 	}
 
 	render() {
-		const {menuData} = this.state;
+		// const {menuData} = this.state;
+
 		return(
       <div id="outer-container">
         <Menua onStateChange={this.handleStateChange} width={'60%'} right isOpen={this.state.menuOpen} pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" }>
@@ -101,10 +143,8 @@ class HeaderPart extends Component {
                 <img style={{width:'120px'}} src={logo} alt=""/>
               </Col>
               <Col span={4}>
-                <Dropdown overlay={menuData} trigger={['click']}>
-                  <a className="ant-dropdown-link" href="/">
-                    北京<Icon type="environment" />
-                  </a>
+                <Dropdown overlay={this.state.menuData} trigger={['click']}>
+	                {this.state.menuDisplay}
                 </Dropdown>
               </Col>
               <Col span={8} style={{textAlign:'right',paddingRight: '24px',fontSize:'20px'}}>
