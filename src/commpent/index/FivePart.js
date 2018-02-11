@@ -138,7 +138,7 @@ class NormalLoginForm extends Component {
 						</FormItem>
 						<FormItem>
 							{getFieldDecorator('community')(
-								<Input prefix={<Icon type="phone" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="楼盘名称" />
+								<Input prefix={<Icon type="home" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="楼盘名称" />
 							)}
 						</FormItem>
 					</Form>

@@ -275,10 +275,10 @@ class NormalLoginForm extends Component {
 												</Col>
 												<Col span={15}>
 													<h3>{item.name}</h3>
-													<p>{item.styleLike.slice(0,11)+'...'}</p>
+													<p>{item.deptName+' | ' + item.levelName + ' | '+ item.years+'年'}</p>
 												</Col>
 												<Col span={5} style={{textAlign:'center'}}>
-													<Icon type="eye-o" /> {item.people}
+													<Icon type="user" /> {item.people}
 													<Button onClick={this.showModal} type="primary" size='small'>预约TA</Button>
 												</Col>
 											</Row>
@@ -317,7 +317,7 @@ class NormalLoginForm extends Component {
 						</FormItem>
 						<FormItem>
 							{getFieldDecorator('community')(
-								<Input prefix={<Icon type="phone" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="楼盘名称" />
+								<Input prefix={<Icon type="home" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="楼盘名称" />
 							)}
 						</FormItem>
 					</Form>

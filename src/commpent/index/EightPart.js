@@ -81,7 +81,7 @@ class NormalLoginForm extends Component {
 		const HotList = hotdata.length
 			? hotdata.map((imgItem, index) => (
 				<Col span={12} key={imgItem.id}>
-					<Link to={`/hothome/${imgItem.id}/list/`}>
+					<Link to={{pathname:`/hothome/${imgItem.id}/list/`}}>
 						<Card
 							style={{ width: '100%' }}
 							cover={<img alt={imgItem.name} src={"http://www.hejianzhiyang.com/Upload/"+imgItem.imgName_348_238} />}
@@ -150,7 +150,7 @@ class NormalLoginForm extends Component {
 						</FormItem>
 						<FormItem>
 							{getFieldDecorator('community')(
-								<Input prefix={<Icon type="phone" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="楼盘名称" />
+								<Input prefix={<Icon type="home" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="楼盘名称" />
 							)}
 						</FormItem>
 					</Form>

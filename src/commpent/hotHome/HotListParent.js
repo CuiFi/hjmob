@@ -118,7 +118,7 @@ class HotListParent extends Component {
 							dataSource={this.state.data}
 							renderItem={item => (
 								<List.Item key={item.id}>
-									<Link to={`/hothome/${item.id}/list/`}>
+									<Link to={{pathname:`/hothome/${item.id}/list/`}}>
 										<Card
 											hoverable
 											style={{ width: '100%' }}

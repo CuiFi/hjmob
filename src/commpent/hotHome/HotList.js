@@ -17,7 +17,7 @@ class HotList extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			data: [],
+			data: '',
 			area: [],
 			housetype: [],
 			housestyle: [],
@@ -50,6 +50,10 @@ class HotList extends Component {
 		fetch('http://www.hejianzhiyang.com/Api/selectDictionary?datatypeID=172',getoption).then(response => response.json()).then(json => this.setState({area:json}));
 
 
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=huxing&page=1',getoption).then(response => response.json()).then(json => this.setState({area:json}));
+
+
+
 		this.getData((res) => {
 			this.setState({
 				data: res,
@@ -63,7 +67,7 @@ class HotList extends Component {
 		var getoption = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&page=1&limit=5&styleID='+styleId + '&huxingID=' + this.state.houseTypeMark + '&areaID=' + this.state.areaMark,getoption).then(
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=huxing&page=1&buildID='+ this.props.match.params.id +'&limit=5&styleID='+styleId + '&huxingID=' + this.state.houseTypeMark + '&areaID=' + this.state.areaMark,getoption).then(
 			response => response.json()
 		).then(json => this.setState({
 			data:json,
@@ -75,7 +79,7 @@ class HotList extends Component {
 		var getoption = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&page=1&limit=5&styleID='+this.state.styleMark + '&huxingID=' + huxingId + '&areaID=' + this.state.areaMark,getoption).then(
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=huxing&page=1&buildID='+ this.props.match.params.id +'&limit=5&styleID='+this.state.styleMark + '&huxingID=' + huxingId + '&areaID=' + this.state.areaMark,getoption).then(
 			response => response.json()
 		).then(json => this.setState({
 			data:json,
@@ -87,7 +91,7 @@ class HotList extends Component {
 		var getoption = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&page=1&limit=5&styleID='+this.state.styleMark + '&huxingID=' + this.state.houseTypeMark + '&areaID=' + areaId,getoption).then(
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=huxing&page=1&buildID='+ this.props.match.params.id +'&limit=5&styleID='+this.state.styleMark + '&huxingID=' + this.state.houseTypeMark + '&areaID=' + areaId,getoption).then(
 			response => response.json()
 		).then(json => this.setState({
 			data:json,
@@ -153,7 +157,7 @@ class HotList extends Component {
 		));
 		return (
 			<div>
-				<SecondHeaderPart title="热装小区"/>
+				<SecondHeaderPart title="楼盘列表"/>
 				<div className="DropdownBtn">
 					<Row>
 						<Col span={8}>

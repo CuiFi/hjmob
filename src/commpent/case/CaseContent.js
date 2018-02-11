@@ -34,8 +34,14 @@ class CaseContent extends Component {
 		return (
 			<div>
 				<SecondHeaderPart title={listText.buildName}/>
-				<div style={{paddingLeft:'10px',paddingRight:'10px',paddingTop:'64px'}}>
-					<h3>{listText.title}</h3>
+				<div style={{paddingLeft:'10px',paddingRight:'10px',paddingTop:'70px'}}>
+					{/*<h3>{listText.title}</h3>*/}
+					<h3 style={{marginBottom:'.2em'}}>业主背景及要求：</h3>
+					<div style={{textIndent:'2em'}} className="articleContainer" dangerouslySetInnerHTML={{ __html:this.state.listText.beijing }}></div>
+					<h3 style={{marginBottom:'.2em'}}>设计思路说明：</h3>
+					<div style={{textIndent:'2em'}} className="articleContainer" dangerouslySetInnerHTML={{ __html:this.state.listText.silu }}></div>
+					<h3 style={{marginBottom:'.2em'}}>主要材料说明：</h3>
+					<div className="articleContainer" dangerouslySetInnerHTML={{ __html:this.state.listText.cailiao }}></div>
 					<div className="articleContainer" dangerouslySetInnerHTML={this.createMarkup()}></div>
 				</div>
 			</div>

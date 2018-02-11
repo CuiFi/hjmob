@@ -10,17 +10,16 @@ class Footer extends Component {
 		var myList = {
 			method:'GET'
 		};
-		fetch("http://www.hejianzhiyang.com/Api/getDataByid?sheet=slider&id=5" ,myList).then(response => response.json()).then(json => this.setState({bottomImg:json}));
+		fetch("http://www.hejianzhiyang.com/Api/getDataByType?sheet=slider&recommendIndex1=1&page=1&limit=1" ,myList).then(response => response.json()).then(json => this.setState({bottomImg:json}));
 	};
 	render() {
 		const {bottomImg} = this.state;
 		const bottomAd = bottomImg
-			? (<img src={"http://www.hejianzhiyang.com/Upload/"+bottomImg.imgName_884_359} alt={bottomImg.title} />)
+			? (<a href={bottomImg[0].link}><img src={"http://www.hejianzhiyang.com/Upload/"+bottomImg[0].imgName_750_304_m} alt={bottomImg.title} /></a>)
 			: '没有加载到任何数据';
 		return (
 			<div className="footer" style={{textAlign:'center'}}>
 				{bottomAd}
-				{/*<img src={"http://www.hejianzhiyang.com/Upload/"+bottomImg.imgName_884_359} alt={bottomImg.title}/>*/}
 				<h3>公司营业时间：09:00-21:00</h3>
 				<h3>咨询热线：4009-010-958</h3>
 				<h3>地址：北京市朝阳区北五环红军营东路6号（北五环汽配城）商务楼A座5层</h3>

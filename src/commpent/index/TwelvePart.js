@@ -12,7 +12,7 @@ class TwelvePart extends Component {
 		var myList = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=daquan&limit=' + this.props.limit,myList).then(response => response.json()).then(json => this.setState({listText:json}));
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=daquan&typeID=50&limit=' + this.props.limit,myList).then(response => response.json()).then(json => this.setState({listText:json}));
 	};
 
 	render() {
@@ -21,7 +21,7 @@ class TwelvePart extends Component {
 			<div className="FourAddTwoBtn TwelvePart">
 				<Row>
 					<Col>
-						<h3>装修问答</h3>
+						<h3>公司动态</h3>
 					</Col>
 				</Row>
 				<List
