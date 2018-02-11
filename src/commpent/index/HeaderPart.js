@@ -131,6 +131,9 @@ class HeaderPart extends Component {
 	        <Link id="casehome" className="menu-item" to={`/threehome/`}>
 		        3D全景
 	        </Link>
+	        <Link id="casehome" className="menu-item" to={`/details/`}>
+		        装修指南
+	        </Link>
 	        <Link id="casehome" className="menu-item" to={`/about/`}>
 		        关于我们
 	        </Link>
@@ -143,7 +146,8 @@ class HeaderPart extends Component {
                 <img style={{width:'120px'}} src={logo} alt=""/>
               </Col>
               <Col span={4}>
-                <Dropdown overlay={this.state.menuData} trigger={['click']}>
+	              {/*<Dropdown overlay={this.state.menuData} trigger={['click']}>*/}
+                <Dropdown overlay={this.state.menuData}>
 	                {this.state.menuDisplay}
                 </Dropdown>
               </Col>

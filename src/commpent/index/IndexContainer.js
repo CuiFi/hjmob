@@ -28,6 +28,7 @@ class IndexContainer extends Component {
 				<SixPart/>
 				<Divider style={{height:"10px",margin:"5px 0"}}/>
 				<SevenPart/>
+				<Divider style={{height:"10px",margin:"5px 0"}}/>
 				<EightPart/>
 				<Divider style={{height:"10px",margin:"5px 0"}}/>
 				<TenPart/>

@@ -100,11 +100,11 @@ class NormalLoginForm extends Component {
 					<h4 style={{textAlign:"center"}}>科学施工  独创专利工艺</h4>
 					<p>合建志洋装饰以精工工程服务享誉业界，并通过15年的实际经验合潜心研究，整合出在施工领域最新进的服务体系，引领装饰行业，帮助消费者实现家居梦想，成就至尚生活 。</p>
 				</Row>
-				<Row gutter={10}>
-					<Col span={24}>
-						<Button style={{width:'100%'}}>查看详情>>></Button>
-					</Col>
-				</Row>
+				{/*<Row gutter={10}>*/}
+					{/*<Col span={24}>*/}
+						{/*<Button style={{width:'100%'}}>查看详情>>></Button>*/}
+					{/*</Col>*/}
+				{/*</Row>*/}
 				{/*当前模态框组件*/}
 				<Modal
 					title="请输入您的报名信息"

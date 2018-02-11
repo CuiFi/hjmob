@@ -8,12 +8,14 @@ import goBack from '../../img/go_back_talk.png';
 class ColInCard extends Component{
 	render(){
 		return(
-			<Col span={this.props.line}>
-				<Card style={{ width: '100%' }}>
-					<Avatar style={{ backgroundColor: '#fff' }} shape="square" src={this.props.img} />
-					<h2 style={{fontSize:'1em'}}>{this.props.text}</h2>
-				</Card>
-			</Col>
+			<a href="tel:4009-010-958">
+				<Col span={this.props.line}>
+					<Card style={{ width: '100%' }}>
+						<Avatar style={{ backgroundColor: '#fff' }} shape="square" src={this.props.img} />
+						<h2 style={{fontSize:'1em'}}>{this.props.text}</h2>
+					</Card>
+				</Col>
+			</a>
 		);
 	}
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Carousel,Layout} from 'antd';
+import { Spin } from 'antd';
 const {Content } = Layout;
 
 
@@ -27,7 +28,7 @@ class SliderBanner extends Component {
 	        </a>
         </div>
 			))
-			: '没有加载到任何数据';
+			: <Spin />;
 		let bannerInHtml = '';
 		switch (banner.length){
 			case 1:
