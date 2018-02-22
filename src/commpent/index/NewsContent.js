@@ -33,7 +33,7 @@ class NewsContent extends Component {
 		return (
 			<div>
 				<SecondHeaderPart title={listText.labelsName}/>
-				<div style={{paddingLeft:'10px',paddingRight:'10px',marginTop:'70px'}}>
+				<div style={{paddingLeft:'10px',paddingRight:'10px',paddingTop:'70px'}}>
 					<h3>{listText.title}</h3>
 					<div className="articleContainer" dangerouslySetInnerHTML={this.createMarkup()}></div>
 				</div>

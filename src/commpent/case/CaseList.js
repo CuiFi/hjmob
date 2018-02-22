@@ -288,6 +288,8 @@ class NormalLoginForm extends Component {
 								</List.Item>
 							)}
 						>
+							{!this.state.data && <Spin className="demo-loading" />}
+							{console.log(!this.state.data)}
 							{this.state.loading && this.state.hasMore && <Spin className="demo-loading" />}
 						</List>
 					</InfiniteScroll>

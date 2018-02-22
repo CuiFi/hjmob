@@ -48,3 +48,18 @@
 
    <Link to={`${this.props.match.url}${item.id}`}></Link>
    ```
+
+6. 刷新当前模块:
+   ```
+   只需要执行this.setState()方法既可
+   ```
+
+7. 刷新当前页面:
+   ```
+   window.location.reload();
+   ```
+
+8. 本地储存实现不同城市切换数据:
+   ```
+   localStorage.cityID = 8;
+   ```

@@ -14,13 +14,13 @@ class NormalLoginForm extends Component {
 	// 初始化,设置模态框显示状态
 	constructor(){
 		super();
-		this.state = { visible: false ,itemImg:''}
+		this.state = { visible: false ,itemImg:'',cityID:localStorage.cityID}
 	}
 	componentWillMount() {
 		var mylist = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&limit=4',mylist).then(response => response.json()).then(json => this.setState({itemImg:json}));
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&limit=4&cityID=' + this.state.cityID,mylist).then(response => response.json()).then(json => this.setState({itemImg:json}));
 	};
 	// 设置模态框状态,让其显示
 	showModal = () => {
@@ -41,7 +41,7 @@ class NormalLoginForm extends Component {
 		// 表单验证提交
 		this.props.form.validateFields((err, values) => {
 			// 传输其他必要数据
-			var otherData = {'cityID':7,'url':'/','orderTypeID':86};
+			var otherData = {'cityID':this.state.cityID,'url':'/','orderTypeID':86};
 			var obj = Object.assign(otherData,values);
 			if (!err) {
 				fetch('http://www.hejianzhiyang.com/Api/doOrder', {

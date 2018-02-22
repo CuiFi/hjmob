@@ -4,14 +4,14 @@ import SecondHeaderPart from '../index/SecondHeaderPart';
 class CaseContent extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {listText:''};
+		this.state = {listText:'',cityID:localStorage.cityID};
 	}
 
 	componentWillMount() {
 		var myList = {
 			method:'GET'
 		};
-		fetch("http://www.hejianzhiyang.com/Api/getDataByid?sheet=case&id=" + this.props.match.params.id ,myList).then(response => response.json()).then(json => this.setState({listText:json}));
+		fetch("http://www.hejianzhiyang.com/Api/getDataByid?sheet=case&id=" + this.props.match.params.id + "&cityID=" + this.state.cityID ,myList).then(response => response.json()).then(json => this.setState({listText:json}));
 		console.log(this.props.match.url);
 		console.log(this.props.match.params);
 		console.log(this.props.match.params.id);
