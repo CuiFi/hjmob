@@ -9,7 +9,7 @@ class App extends Component {
 	componentWillMount(){
 		console.log(this.props.match.url);
 		// localStorage.cityID = 7;
-		console.log("bendi:"+localStorage.cityID);
+		// console.log("bendi:"+localStorage.cityID);
 	}
   render() {
     return (

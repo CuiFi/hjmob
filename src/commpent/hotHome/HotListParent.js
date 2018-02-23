@@ -19,7 +19,8 @@ class HotListParent extends Component {
 			loading: false,
 			hasMore: true,
 			quId:'',
-			loadPage:1
+			loadPage:1,
+			cityID:localStorage.cityID
 		};
 	}
 	componentWillMount() {
@@ -27,7 +28,7 @@ class HotListParent extends Component {
 		var myList = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=qu&cityID=7&page=1&limit=20',myList).then(response => response.json()).then(json => this.setState({radiodata:json}));
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=qu&page=1&limit=20&cityID=' + this.state.cityID,myList).then(response => response.json()).then(json => this.setState({radiodata:json}));
 
 		// 获取第一页
 		this.getData((res) => {
@@ -43,7 +44,7 @@ class HotListParent extends Component {
 		var myList = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=build&limit=5&quID=' + quid +'&page='+ this.state.loadPage ,myList).then(response => response.json()).then(json => this.setState({data:json}));
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=build&limit=5&quID=' + quid +'&page='+ this.state.loadPage + '&cityID=' + this.state.cityID ,myList).then(response => response.json()).then(json => this.setState({data:json}));
 		console.log(`当前请求页数:${this.state.loadPage}`);
 	}
 
@@ -62,7 +63,7 @@ class HotListParent extends Component {
 			method:'GET'
 		};
 
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=build&limit=5&quID='+this.state.quId+'&page='+ this.state.loadPage ,myList).then(response => response.json()).then(res => callback(res));
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=build&cityID=' + this.state.cityID + '&limit=5&quID='+this.state.quId+'&page='+ this.state.loadPage ,myList).then(response => response.json()).then(res => callback(res));
 		console.log(`当前请求页数:${this.state.loadPage}`);
 	}
 

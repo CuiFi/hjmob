@@ -15,7 +15,8 @@ class ThreeList extends Component {
 			data: [],
 			loading: false,
 			hasMore: true,
-			loadPage:1
+			loadPage:1,
+			cityID:localStorage.cityID
 		};
 	}
 
@@ -32,7 +33,7 @@ class ThreeList extends Component {
 		var myList = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=quanjing&limit=5&page='+ this.state.loadPage ,myList).then(response => response.json()).then(res => callback(res));
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=quanjing&limit=5&page='+ this.state.loadPage + '&cityID=' + this.state.cityID ,myList).then(response => response.json()).then(res => callback(res));
 	}
 
 	handleInfiniteOnLoad = () => {

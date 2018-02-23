@@ -14,14 +14,14 @@ const openNotificationWithIcon = (type) => {
 class NormalLoginForm extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {banner:'',visible: false};
+		this.state = {banner:'',visible: false,cityID:localStorage.cityID};
 	}
 
 	componentWillMount() {
 		var myslider = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=slider&limit=3',myslider).then(response => response.json()).then(json => this.setState({banner:json}));
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=slider&limit=3&cityID=' + this.state.cityID,myslider).then(response => response.json()).then(json => this.setState({banner:json}));
 	};
 
 	// 设置模态框状态,让其显示
@@ -43,7 +43,7 @@ class NormalLoginForm extends Component {
 		// 表单验证提交
 		this.props.form.validateFields((err, values) => {
 			// 传输其他必要数据
-			var otherData = {'cityID':7,'url':'/','orderTypeID':86};
+			var otherData = {'cityID':this.state.cityID,'url':'/','orderTypeID':86};
 			var obj = Object.assign(otherData,values);
 			if (!err) {
 				fetch('http://www.hejianzhiyang.com/Api/doOrder', {

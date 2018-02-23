@@ -5,14 +5,14 @@ import {Row, Col,Button,Carousel} from 'antd';
 class SixPart extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {banner:''};
+		this.state = {banner:'',cityID:localStorage.cityID};
 	}
 
 	componentWillMount() {
 		var myslider = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=quanjing&recommendIndex=1&limit=3',myslider).then(response => response.json()).then(json => this.setState({banner:json}));
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=quanjing&recommendIndex=1&limit=3&cityID=' + this.state.cityID,myslider).then(response => response.json()).then(json => this.setState({banner:json}));
 	};
 
 

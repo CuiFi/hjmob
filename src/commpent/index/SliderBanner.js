@@ -7,14 +7,14 @@ const {Content } = Layout;
 class SliderBanner extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {banner:''};
+		this.state = {banner:'',cityID:localStorage.cityID};
 	}
 
 	componentWillMount() {
 		var myslider = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=slider&page=1&limit=10&recommendIndex=1&cityID=7',myslider).then(response => response.json()).then(json => this.setState({banner:json}));
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=slider&page=1&limit=10&recommendIndex=1&cityID=' + this.state.cityID,myslider).then(response => response.json()).then(json => this.setState({banner:json}));
 	};
 
 

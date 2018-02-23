@@ -14,14 +14,14 @@ const openNotificationWithIcon = (type) => {
 class NormalLoginForm extends Component {
 	constructor(){
 		super();
-		this.state = { hotdata:'',visible: false}
+		this.state = { hotdata:'',visible: false,cityID:localStorage.cityID}
 	}
 
 	componentWillMount() {
 		var mylist = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=build&recommendIndex=1&limit=4',mylist).then(response => response.json()).then(json => this.setState({hotdata:json}));
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=build&recommendIndex=1&limit=4&cityID=' + this.state.cityID,mylist).then(response => response.json()).then(json => this.setState({hotdata:json}));
 	};
 
 	// 设置模态框状态,让其显示
@@ -43,7 +43,7 @@ class NormalLoginForm extends Component {
 		// 表单验证提交
 		this.props.form.validateFields((err, values) => {
 			// 传输其他必要数据
-			var otherData = {'cityID':7,'url':'/','orderTypeID':86};
+			var otherData = {'cityID':this.state.cityID,'url':'/','orderTypeID':86};
 			var obj = Object.assign(otherData,values);
 			if (!err) {
 				fetch('http://www.hejianzhiyang.com/Api/doOrder', {
@@ -78,6 +78,7 @@ class NormalLoginForm extends Component {
 	render() {
 		const { getFieldDecorator } = this.props.form;
 		const {hotdata} = this.state;
+		console.log(hotdata.length);
 		const HotList = hotdata.length
 			? hotdata.map((imgItem, index) => (
 				<Col span={12} key={imgItem.id}>

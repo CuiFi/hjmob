@@ -32,7 +32,8 @@ class NormalLoginForm extends Component {
 			styleMark:'',
 			houseTypeMark:'',
 			areaMark:'',
-			loadPage:1
+			loadPage:1,
+			cityID:localStorage.cityID
 		};
 	}
 
@@ -79,7 +80,7 @@ class NormalLoginForm extends Component {
 		// 表单验证提交
 		this.props.form.validateFields((err, values) => {
 			// 传输其他必要数据
-			var otherData = {'cityID':7,'url':this.props.match.url,'orderTypeID':104};
+			var otherData = {'cityID':this.state.cityID,'url':this.props.match.url,'orderTypeID':104};
 			var obj = Object.assign(otherData,values);
 			if (!err) {
 				fetch('http://www.hejianzhiyang.com/Api/doOrder', {
@@ -116,7 +117,7 @@ class NormalLoginForm extends Component {
 		var getoption = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&page=1&limit=5&styleID='+styleId + '&huxingID=' + this.state.houseTypeMark + '&areaID=' + this.state.areaMark,getoption).then(
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&page=1&limit=5&styleID='+styleId + '&huxingID=' + this.state.houseTypeMark + '&areaID=' + this.state.areaMark + '&cityID=' + this.state.cityID,getoption).then(
 			response => response.json()
 		).then(json => this.setState({
 			data:json,
@@ -128,7 +129,7 @@ class NormalLoginForm extends Component {
 		var getoption = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&page=1&limit=5&styleID='+this.state.styleMark + '&huxingID=' + huxingId + '&areaID=' + this.state.areaMark,getoption).then(
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&page=1&limit=5&styleID='+this.state.styleMark + '&huxingID=' + huxingId + '&areaID=' + this.state.areaMark + '&cityID=' + this.state.cityID,getoption).then(
 			response => response.json()
 		).then(json => this.setState({
 			data:json,
@@ -140,7 +141,7 @@ class NormalLoginForm extends Component {
 		var getoption = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&page=1&limit=5&styleID='+this.state.styleMark + '&huxingID=' + this.state.houseTypeMark + '&areaID=' + areaId,getoption).then(
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&page=1&limit=5&styleID='+this.state.styleMark + '&huxingID=' + this.state.houseTypeMark + '&areaID=' + areaId + '&cityID=' + this.state.cityID,getoption).then(
 			response => response.json()
 		).then(json => this.setState({
 			data:json,
@@ -174,7 +175,7 @@ class NormalLoginForm extends Component {
 		var myList = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&page='+ this.state.loadPage +'&limit=5&styleID='+this.state.styleMark + '&huxingID=' + this.state.houseTypeMark + '&areaID=' + this.state.areaMark ,myList).then(response => response.json()).then(res => callback(res));
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&page='+ this.state.loadPage +'&limit=5&styleID='+this.state.styleMark + '&huxingID=' + this.state.houseTypeMark + '&areaID=' + this.state.areaMark + '&cityID=' + this.state.cityID ,myList).then(response => response.json()).then(res => callback(res));
 		console.log(`当前请求页数:${this.state.loadPage}`);
 	}
 	handleInfiniteOnLoad = () => {
@@ -289,7 +290,6 @@ class NormalLoginForm extends Component {
 							)}
 						>
 							{!this.state.data && <Spin className="demo-loading" />}
-							{console.log(!this.state.data)}
 							{this.state.loading && this.state.hasMore && <Spin className="demo-loading" />}
 						</List>
 					</InfiniteScroll>
