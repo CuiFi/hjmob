@@ -85,7 +85,12 @@ img{
   padding-left: 10px;
   padding-right: 10px;
   overflow: auto;
-  height: 665px;
+  height: 568px;
+}
+@media all and (min-width: 374px){
+  .HotList{
+    height: 665px;
+  }
 }
 .HotList .ant-card-body{
   padding:10px;
@@ -180,13 +185,16 @@ img{
 
 /* General sidebar styles */
 .bm-menu {
-  background: #fff;
+  width: 100%;
+  /*background: #fff;*/
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
 }
 
 .bm-menu a{
-  line-height:28px;
+  line-height: 3;
+  border-bottom: 1px solid;
+  color: #b8b7ad;
 }
 
 /* Morph shape necessary with bubble or elastic */

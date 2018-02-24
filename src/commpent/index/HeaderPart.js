@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import { Layout, Menu, Icon, Dropdown,Row, Col} from 'antd';
-import { slide as Menua } from 'react-burger-menu';
+import { bubble as Menua } from 'react-burger-menu';
 import logo from '../../img/logo.png';
 const { Header } = Layout;
 
@@ -187,13 +187,14 @@ class HeaderPart extends Component {
 
 		return(
       <div id="outer-container">
-        <Menua onStateChange={this.handleStateChange} width={'60%'} right isOpen={this.state.menuOpen} pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" }>
+        <Menua onStateChange={this.handleStateChange} width={'100%'} right isOpen={this.state.menuOpen} pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" }>
 	        <Link id="home" className="menu-item" to={`/`}>
 		        首页
 	        </Link>
-	        <Link id="hothome" className="menu-item" to={`/hothome/`}>
-		        热装小区
-	        </Link>
+	        {localStorage.cityID == 8 ? '' : (<Link id="hothome" className="menu-item" to={`/hothome/`}>热装小区</Link>)}
+	        {/*<Link id="hothome" className="menu-item" to={`/hothome/`}>*/}
+		        {/*热装小区*/}
+	        {/*</Link>*/}
 	        <Link id="casehome" className="menu-item" to={`/casehome/`}>
 		        装修案例
 	        </Link>

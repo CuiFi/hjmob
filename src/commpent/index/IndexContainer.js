@@ -13,8 +13,15 @@ import TenPart from './TenPart';
 import TwelvePart from './TwelvePart';
 import ThirteenPart from './ThirteenPart';
 
+
+
 class IndexContainer extends Component {
 	render() {
+		let eightPart = (<div><EightPart/>
+			<Divider style={{height:"10px",margin:"5px 0"}}/></div>);
+		if (localStorage.cityID == 8){
+			eightPart = '';
+		}
 		return (
 			<div>
 				<SliderBanner />
@@ -29,8 +36,7 @@ class IndexContainer extends Component {
 				<Divider style={{height:"10px",margin:"5px 0"}}/>
 				<SevenPart/>
 				<Divider style={{height:"10px",margin:"5px 0"}}/>
-				<EightPart/>
-				<Divider style={{height:"10px",margin:"5px 0"}}/>
+				{eightPart}
 				<TenPart/>
 				{/*<Divider style={{height:"10px",margin:"5px 0"}}/>*/}
 				{/*<ElevenPart/>*/}
