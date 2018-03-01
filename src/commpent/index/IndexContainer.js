@@ -19,7 +19,7 @@ class IndexContainer extends Component {
 	render() {
 		let eightPart = (<div><EightPart/>
 			<Divider style={{height:"10px",margin:"5px 0"}}/></div>);
-		if (localStorage.cityID == 8){
+		if (localStorage.cityID === 8){
 			eightPart = '';
 		}
 		return (

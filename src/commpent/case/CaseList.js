@@ -39,6 +39,7 @@ class NormalLoginForm extends Component {
 
 	componentWillMount() {
 		// 获取下拉选项风格数据
+		page=1;
 		var getoption = {
 			method:'GET'
 		};
@@ -121,7 +122,8 @@ class NormalLoginForm extends Component {
 			response => response.json()
 		).then(json => this.setState({
 			data:json,
-			styleMark:styleId
+			styleMark:styleId,
+			hasMore:true
 		}));
 	}
 	// 户型选择数据
@@ -133,7 +135,8 @@ class NormalLoginForm extends Component {
 			response => response.json()
 		).then(json => this.setState({
 			data:json,
-			houseTypeMark:huxingId
+			houseTypeMark:huxingId,
+			hasMore:true
 		}));
 	}
 	// 面积选择数据
@@ -145,12 +148,14 @@ class NormalLoginForm extends Component {
 			response => response.json()
 		).then(json => this.setState({
 			data:json,
-			areaMark:areaId
+			areaMark:areaId,
+			hasMore:true
 		}));
 	}
 	styleHandleChange = (value) => {
 		console.log(`风格: ${value}`);
 		this.getStyleData(value);
+		page=1;
 		console.log(this.state.styleMark);
 		console.log(this.state.houseTypeMark);
 		console.log(this.state.areaMark);
@@ -158,6 +163,7 @@ class NormalLoginForm extends Component {
 	houseTypeHandleChange = (value) => {
 		console.log(`户型: ${value}`);
 		this.getHouseData(value);
+		page=1;
 		console.log(this.state.styleMark);
 		console.log(this.state.houseTypeMark);
 		console.log(this.state.areaMark);
@@ -165,6 +171,7 @@ class NormalLoginForm extends Component {
 	areaHandleChange = (value) => {
 		console.log(`面积: ${value}`);
 		this.getAreaData(value);
+		page=1;
 		console.log(this.state.styleMark);
 		console.log(this.state.houseTypeMark);
 		console.log(this.state.areaMark);
@@ -191,6 +198,7 @@ class NormalLoginForm extends Component {
 				this.setState({
 					hasMore: false,
 					loading: false,
+					loadPage:1
 				});
 				return;
 			}
@@ -228,6 +236,7 @@ class NormalLoginForm extends Component {
 								onChange={this.styleHandleChange}
 								style={{ width: '100%' }}
 							>
+								<Option value=''>全部</Option>
 								{housestyleListData}
 							</Select>
 						</Col>
@@ -237,6 +246,7 @@ class NormalLoginForm extends Component {
 								onChange={this.houseTypeHandleChange}
 								style={{ width: '100%' }}
 							>
+								<Option value=''>全部</Option>
 								{housetypeListData}
 							</Select>
 						</Col>
@@ -246,6 +256,7 @@ class NormalLoginForm extends Component {
 								onChange={this.areaHandleChange}
 								style={{ width: '100%' }}
 							>
+								<Option value=''>全部</Option>
 								{areaListData}
 							</Select>
 						</Col>
@@ -289,7 +300,6 @@ class NormalLoginForm extends Component {
 								</List.Item>
 							)}
 						>
-							{!this.state.data && <Spin className="demo-loading" />}
 							{this.state.loading && this.state.hasMore && <Spin className="demo-loading" />}
 						</List>
 					</InfiniteScroll>

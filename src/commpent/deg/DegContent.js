@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SecondHeaderPart from '../index/SecondHeaderPart';
-import {Card, Col, Row} from "antd";
+import {Card, Col, Row, Spin} from "antd";
 import {Link} from "react-router-dom";
 
 class DegContent extends Component {
@@ -14,10 +14,10 @@ class DegContent extends Component {
 			method:'GET'
 		};
 		fetch("http://www.hejianzhiyang.com/Api/getDataByid?sheet=designer&id=" + this.props.match.params.id ,myList).then(response => response.json()).then(json => this.setState({listText:json}));
-		console.log(this.props.match.url);
-		console.log(this.props.match.params);
-		console.log(this.props.match.params.id);
-		console.log(this.props.match);
+		// console.log(this.props.match.url);
+		// console.log(this.props.match.params);
+		// console.log(this.props.match.params.id);
+		// console.log(this.props.match);
 		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&cityID=' + this.state.cityID + '&page=1&limit=4&designerID=' + this.props.match.params.id,myList).then(response => response.json()).then(json => this.setState({itemImg:json}));
 	};
 
@@ -41,7 +41,7 @@ class DegContent extends Component {
 					</Link>
 				</Col>
 			))
-			: '没有加载到任何数据';
+			: <Spin className="demo-loading" />;
 		return (
 			<div>
 				<SecondHeaderPart title={listText.name}/>

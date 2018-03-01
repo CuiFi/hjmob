@@ -28,7 +28,7 @@ class HeaderPart extends Component {
 	}
 
 	componentWillMount(){
-		switch (parseInt(localStorage.cityID)){
+		switch (parseInt(localStorage.cityID,10)){
 			case 7:
 				this.setState({
 					menuData:<Menu onClick={this.onClick}>
@@ -98,7 +98,7 @@ class HeaderPart extends Component {
 
 
 	onClick = ({key}) => {
-		switch (parseInt(key)){
+		switch (parseInt(key,10)){
 			case 7:
 				this.setState({
 					menuData:<Menu onClick={this.onClick}>
@@ -183,7 +183,7 @@ class HeaderPart extends Component {
 	}
 
 	render() {
-		const {menuData} = this.state;
+		// const {menuData} = this.state;
 
 		return(
       <div id="outer-container">
@@ -191,7 +191,7 @@ class HeaderPart extends Component {
 	        <Link id="home" className="menu-item" to={`/`}>
 		        首页
 	        </Link>
-	        {localStorage.cityID == 8 ? '' : (<Link id="hothome" className="menu-item" to={`/hothome/`}>热装小区</Link>)}
+	        {localStorage.cityID === 8 ? '' : (<Link id="hothome" className="menu-item" to={`/hothome/`}>热装小区</Link>)}
 	        {/*<Link id="hothome" className="menu-item" to={`/hothome/`}>*/}
 		        {/*热装小区*/}
 	        {/*</Link>*/}

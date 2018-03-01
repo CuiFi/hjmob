@@ -39,6 +39,7 @@ class NormalLoginForm extends Component {
 
 	componentWillMount() {
 		// 获取下拉选项风格数据
+		page=1;
 		var getoption = {
 			method:'GET'
 		};
@@ -121,7 +122,8 @@ class NormalLoginForm extends Component {
 			response => response.json()
 		).then(json => this.setState({
 			data:json,
-			deptMark:deptId
+			deptMark:deptId,
+			hasMore:true
 		}));
 	}
 	// 设计师级别选择数据
@@ -133,7 +135,8 @@ class NormalLoginForm extends Component {
 			response => response.json()
 		).then(json => this.setState({
 			data:json,
-			levelMark:levelId
+			levelMark:levelId,
+			hasMore:true
 		}));
 	}
 	// 擅长风格选择数据
@@ -145,12 +148,14 @@ class NormalLoginForm extends Component {
 			response => response.json()
 		).then(json => this.setState({
 			data:json,
-			goodstyleMark:goodstyleId
+			goodstyleMark:goodstyleId,
+			hasMore:true
 		}));
 	}
 	deptHandleChange = (value) => {
 		console.log(`风格: ${value}`);
 		this.getDeptData(value);
+		page=1;
 		console.log(this.state.styleMark);
 		console.log(this.state.houseTypeMark);
 		console.log(this.state.areaMark);
@@ -158,6 +163,7 @@ class NormalLoginForm extends Component {
 	levelTypeHandleChange = (value) => {
 		console.log(`户型: ${value}`);
 		this.getLevelData(value);
+		page=1;
 		console.log(this.state.styleMark);
 		console.log(this.state.houseTypeMark);
 		console.log(this.state.areaMark);
@@ -165,6 +171,7 @@ class NormalLoginForm extends Component {
 	styleHandleChange = (value) => {
 		console.log(`面积: ${value}`);
 		this.getGoodStyleData(value);
+		page=1;
 		console.log(this.state.styleMark);
 		console.log(this.state.houseTypeMark);
 		console.log(this.state.areaMark);
@@ -191,6 +198,7 @@ class NormalLoginForm extends Component {
 				this.setState({
 					hasMore: false,
 					loading: false,
+					loadPage:1
 				});
 				return;
 			}
@@ -228,6 +236,7 @@ class NormalLoginForm extends Component {
 								onChange={this.deptHandleChange}
 								style={{ width: '100%' }}
 							>
+								<Option value=''>全部</Option>
 								{departmentListData}
 							</Select>
 						</Col>
@@ -237,6 +246,7 @@ class NormalLoginForm extends Component {
 								onChange={this.levelTypeHandleChange}
 								style={{ width: '100%' }}
 							>
+								<Option value=''>全部</Option>
 								{levelListData}
 							</Select>
 						</Col>
@@ -246,6 +256,7 @@ class NormalLoginForm extends Component {
 								onChange={this.styleHandleChange}
 								style={{ width: '100%' }}
 							>
+								<Option value=''>全部</Option>
 								{goodstyleListData}
 							</Select>
 						</Col>
@@ -288,7 +299,6 @@ class NormalLoginForm extends Component {
 								</List.Item>
 							)}
 						>
-							{!this.state.data && <Spin className="demo-loading" />}
 							{this.state.loading && this.state.hasMore && <Spin className="demo-loading" />}
 						</List>
 					</InfiniteScroll>

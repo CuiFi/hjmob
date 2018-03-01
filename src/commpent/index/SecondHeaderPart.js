@@ -36,7 +36,7 @@ class SecondHeaderPart extends Component {
 	        <Link id="home" className="menu-item" to={`/`}>
 		        首页
 	        </Link>
-	        {localStorage.cityID == 8 ? '' : (<Link id="hothome" className="menu-item" to={`/hothome/`}>热装小区</Link>)}
+	        {localStorage.cityID === 8 ? '' : (<Link id="hothome" className="menu-item" to={`/hothome/`}>热装小区</Link>)}
 	        {/*<Link id="home" className="menu-item" to={`/hothome/`}>*/}
 		        {/*热装小区*/}
 	        {/*</Link>*/}

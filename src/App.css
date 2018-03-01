@@ -85,11 +85,11 @@ img{
   padding-left: 10px;
   padding-right: 10px;
   overflow: auto;
-  height: 568px;
+  /*height: 568px;*/
 }
 @media all and (min-width: 374px){
   .HotList{
-    height: 665px;
+    /*height: 665px;*/
   }
 }
 .HotList .ant-card-body{

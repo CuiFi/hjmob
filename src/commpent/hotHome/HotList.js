@@ -37,6 +37,7 @@ class HotList extends Component {
 	}
 	componentWillMount() {
 		console.log(this.props.match.params.id);
+		page = 1;
 		// 获取下拉选项风格数据
 		var getoption = {
 			method:'GET'
@@ -71,7 +72,8 @@ class HotList extends Component {
 			response => response.json()
 		).then(json => this.setState({
 			data:json,
-			styleMark:styleId
+			styleMark:styleId,
+			hasMore: true
 		}));
 	}
 	// 户型选择数据
@@ -83,7 +85,8 @@ class HotList extends Component {
 			response => response.json()
 		).then(json => this.setState({
 			data:json,
-			houseTypeMark:huxingId
+			houseTypeMark:huxingId,
+			hasMore:true
 		}));
 	}
 	// 面积选择数据
@@ -95,32 +98,37 @@ class HotList extends Component {
 			response => response.json()
 		).then(json => this.setState({
 			data:json,
-			areaMark:areaId
+			areaMark:areaId,
+			hasMore:true
 		}));
 	}
 	styleHandleChange = (value) => {
-		console.log(`风格: ${value}`);
+		// console.log(`风格: ${value}`);
 		this.getStyleData(value);
-		console.log(this.state.styleMark);
-		console.log(this.state.houseTypeMark);
-		console.log(this.state.areaMark);
+		page=1;
+		// console.log(this.state.styleMark);
+		// console.log(this.state.houseTypeMark);
+		// console.log(this.state.areaMark);
 	}
 	houseTypeHandleChange = (value) => {
-		console.log(`户型: ${value}`);
+		// console.log(`户型: ${value}`);
 		this.getHouseData(value);
-		console.log(this.state.styleMark);
-		console.log(this.state.houseTypeMark);
-		console.log(this.state.areaMark);
+		page=1;
+		// console.log(this.state.styleMark);
+		// console.log(this.state.houseTypeMark);
+		// console.log(this.state.areaMark);
 	}
 	areaHandleChange = (value) => {
-		console.log(`面积: ${value}`);
+		// console.log(`面积: ${value}`);
 		this.getAreaData(value);
-		console.log(this.state.styleMark);
-		console.log(this.state.houseTypeMark);
-		console.log(this.state.areaMark);
+		page=1;
+		// console.log(this.state.styleMark);
+		// console.log(this.state.houseTypeMark);
+		// console.log(this.state.areaMark);
 	}
 
 	handleInfiniteOnLoad = () => {
+		console.log(this.state.loadPage);
 		let data = this.state.data;
 		this.setState({
 			loading: true,
@@ -132,6 +140,7 @@ class HotList extends Component {
 				this.setState({
 					hasMore: false,
 					loading: false,
+					loadPage:1
 				});
 				return;
 			}
@@ -166,6 +175,7 @@ class HotList extends Component {
 								onChange={this.styleHandleChange}
 								style={{ width: '100%' }}
 							>
+								<Option value=''>全部</Option>
 								{housestyleListData}
 							</Select>
 						</Col>
@@ -175,6 +185,7 @@ class HotList extends Component {
 								onChange={this.houseTypeHandleChange}
 								style={{ width: '100%' }}
 							>
+								<Option value=''>全部</Option>
 								{housetypeListData}
 							</Select>
 						</Col>
@@ -184,6 +195,7 @@ class HotList extends Component {
 								onChange={this.areaHandleChange}
 								style={{ width: '100%' }}
 							>
+								<Option value=''>全部</Option>
 								{areaListData}
 							</Select>
 						</Col>

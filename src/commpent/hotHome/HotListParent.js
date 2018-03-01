@@ -24,6 +24,7 @@ class HotListParent extends Component {
 		};
 	}
 	componentWillMount() {
+		page=1;
 		//获取区域选项
 		var myList = {
 			method:'GET'
@@ -45,16 +46,22 @@ class HotListParent extends Component {
 			method:'GET'
 		};
 		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=build&limit=5&quID=' + quid +'&page='+ this.state.loadPage + '&cityID=' + this.state.cityID ,myList).then(response => response.json()).then(json => this.setState({data:json}));
-		console.log(`当前请求页数:${this.state.loadPage}`);
+
 	}
 
+	//这是选择之后还可以继续判断下拉的重要步骤
 	// 区域选择时执行的方法
 	onChange = (e) => {
+		console.log("选择当前的id:"+e.target.value);
 		this.setState({
 			quId:e.target.value,
-			loadPage:1
+			loadPage:1,
+			hasMore:true
+		},()=>{
+			this.getQuData(this.state.quId);
+			page = 1;
 		});
-		this.getQuData(e.target.value);
+
 	}
 
 	// 滚动加载数据时所用的方法,对获取到的数据进行回调函数处理
@@ -104,6 +111,9 @@ class HotListParent extends Component {
 				<div className="HotList">
 					<RadioGroup style={{paddingTop:'64px'}} onChange={this.onChange} defaultValue="a" size="small">
 						<Row>
+							<Col span={6} key=''>
+								<RadioButton value='' style={{width:'90%',textAlign:'center',marginBottom:'5px'}}>全部</RadioButton>
+							</Col>
 							{radiodataList}
 						</Row>
 					</RadioGroup>
@@ -112,7 +122,7 @@ class HotListParent extends Component {
 						pageStart={0}
 						loadMore={this.handleInfiniteOnLoad}
 						hasMore={!this.state.loading && this.state.hasMore}
-						useWindow={false}
+						useWindow={true}
 					>
 						<List
 							itemLayout="vertical"
@@ -139,6 +149,7 @@ class HotListParent extends Component {
 								</List.Item>
 							)}
 						>
+							{this.state.data.length === 0 ? <p style={{textAlign:'center'}}>没有更多数据</p> : ''}
 							{this.state.loading && this.state.hasMore && <Spin className="demo-loading" />}
 						</List>
 					</InfiniteScroll>

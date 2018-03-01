@@ -27,7 +27,7 @@ class ColInCard extends Component{
 class ThirteenPart extends Component {
 	render() {
 		let whichTel = '';
-		switch (parseInt(localStorage.cityID)){
+		switch (parseInt(localStorage.cityID,10)){
 			case 7:
 				whichTel = BJtel;
 				break;

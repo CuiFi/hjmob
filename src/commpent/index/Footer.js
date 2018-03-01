@@ -39,7 +39,7 @@ class Footer extends Component {
 	render() {
 		const {bottomImg} = this.state;
 		let addr = '';
-		switch (parseInt(this.state.cityID)){
+		switch (parseInt(this.state.cityID,10)){
 			case 7:
 				addr = BJaddr;
 				break;
