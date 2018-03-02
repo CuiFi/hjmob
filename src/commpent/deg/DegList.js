@@ -262,7 +262,7 @@ class NormalLoginForm extends Component {
 						</Col>
 					</Row>
 				</div>
-				<div className="HotList DegList" style={{height:'570px'}}>
+				<div className="HotList DegList">
 					<InfiniteScroll
 						initialLoad={false}
 						pageStart={0}

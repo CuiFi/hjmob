@@ -149,7 +149,6 @@ class HotListParent extends Component {
 								</List.Item>
 							)}
 						>
-							{this.state.data.length === 0 ? <p style={{textAlign:'center'}}>没有更多数据</p> : ''}
 							{this.state.loading && this.state.hasMore && <Spin className="demo-loading" />}
 						</List>
 					</InfiniteScroll>

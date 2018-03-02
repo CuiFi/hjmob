@@ -201,7 +201,7 @@ class HotList extends Component {
 						</Col>
 					</Row>
 				</div>
-				<div className="HotList" style={{height:'570px'}}>
+				<div className="HotList">
 					<InfiniteScroll
 						initialLoad={false}
 						pageStart={0}

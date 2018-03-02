@@ -96,7 +96,6 @@ class ThreeList extends Component {
 								</List.Item>
 							)}
 						>
-							{!this.state.data || <Spin className="demo-loading" />}
 							{this.state.loading && this.state.hasMore && <Spin className="demo-loading" />}
 						</List>
 					</InfiniteScroll>
