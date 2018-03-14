@@ -23,6 +23,7 @@ class DetailsList extends Component {
 			loadPage:1
 		};
 	}
+
 	componentWillMount() {
 		//获取种类选项
 		var myList = {
@@ -38,7 +39,6 @@ class DetailsList extends Component {
 				data: res,
 			});
 		});
-
 		// console.log(this.props.match.url);
 	}
 
@@ -67,7 +67,6 @@ class DetailsList extends Component {
 		var myList = {
 			method:'GET'
 		};
-
 		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=daquan&limit=5&typeID=' + this.state.quId + '&page=' + this.state.loadPage ,myList).then(response => response.json()).then(res => callback(res));
 		console.log(`当前请求页数:${this.state.loadPage}`);
 	}

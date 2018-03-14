@@ -13,6 +13,7 @@ const openNotificationWithIcon = (type) => {
 	});
 };
 
+
 class NormalLoginForm extends Component {
 	// 初始化,设置模态框显示状态
 	constructor(){
@@ -27,6 +28,7 @@ class NormalLoginForm extends Component {
 		});
 	}
 	// 设置模态框状态,让其隐藏
+
 	hideModal = () => {
 		this.setState({
 			visible: false,

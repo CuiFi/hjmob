@@ -342,3 +342,4 @@ class NormalLoginForm extends Component {
 const CaseList = Form.create()(NormalLoginForm);
 
 export default CaseList;
+

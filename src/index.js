@@ -1,3 +1,6 @@
+import 'core-js/es6/map';
+import 'core-js/es6/set';
+import 'raf/polyfill';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import {Route, BrowserRouter,Switch,HashRouter} from 'react-router-dom';
@@ -16,7 +19,7 @@ import DegContent from './commpent/deg/DegContent';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
-export default class Root extends Component{
+class Root extends Component{
 	render(){
 		return(
 			<div>
