@@ -7,7 +7,7 @@ const { Header } = Layout;
 const history = createHistory();
 
 
-class SecondHeaderPart extends Component {
+class NewHeaderPart extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
@@ -36,6 +36,9 @@ class SecondHeaderPart extends Component {
   reloadPage = () => {
     window.history.go(-1);
   }
+
+
+
 
 
 	render() {
@@ -70,9 +73,11 @@ class SecondHeaderPart extends Component {
         <Layout id="page-wrap">
           <Header theme="dark" style={{ background: '#fff', padding: 0,overflow:'hidden',position: 'fixed', width: '100%',zIndex:1, boxShadow:'0 1px #c8c8c8'}}>
             <Row>
-              <Col style={{paddingLeft:'24px'}} span={4} onClick={this.reloadPage}>
-                <Icon type="left" />
-              </Col>
+							<Link to={this.props.pathTo}>
+                <Col style={{paddingLeft: '24px'}} span={4}>
+                  <Icon type="left" />
+                </Col>
+							</Link>
               <Col span={16}>
                 <h4 style={{textAlign:'center'}}>{this.props.title}</h4>
               </Col>
@@ -91,4 +96,4 @@ class SecondHeaderPart extends Component {
 	}
 }
 
-export default SecondHeaderPart;
+export default NewHeaderPart;

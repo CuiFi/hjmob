@@ -16,6 +16,8 @@ import AboutContent from './commpent/about/AboutContent';
 import DetailsList from './commpent/complete/DetailsList';
 import DegList from './commpent/deg/DegList';
 import DegContent from './commpent/deg/DegContent';
+import ComActiveList from './commpent/comactive/ComActiveList';
+import ComActiveContent from './commpent/comactive/ComActiveContent';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -42,6 +44,9 @@ class Root extends Component{
 
 						<Route path="/deg/:id" component={DegContent}></Route>
 						<Route path="/deg/" component={DegList}></Route>
+
+						<Route path="/comactivelist/:id" component={ComActiveContent}></Route>
+						<Route path="/comactivelist/" component={ComActiveList}></Route>
 					</Switch>
 				</HashRouter>
 			</div>

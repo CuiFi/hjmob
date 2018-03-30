@@ -20,9 +20,14 @@ class TwelvePart extends Component {
 		return (
 			<div className="FourAddTwoBtn TwelvePart">
 				<Row>
-					<Col>
+					<Col span={12}>
 						<h3>公司动态</h3>
 					</Col>
+          <Col span={12} style={{textAlign:'right'}}>
+						<Link to={`/comactivelist/`}>
+              <h3>查看更多</h3>
+						</Link>
+          </Col>
 				</Row>
 				<List
 					size="small"
