@@ -49,7 +49,9 @@ class ComActiveList extends Component {
 					<Row style={{margin:'10px 0 0'}}>
 						<Col span={24}>
 							<h4 style={{color:"#104c42",textAlign:'center'}}>申请成为业主须知</h4>
-							<p style={{padding:'0 10px',fontSize:'0.8em'}}>申请成为业主须知申请成为业主须知申请成为业主须知申请成为业主须知申请成为业主须知申请成为业主须知申请成为业主须知</p>
+							<p style={{padding:'0 10px',fontSize:'0.8em',marginBottom:'5px'}}>1.业主可以选择两种录制方式一种是本人参与录制,需要有良好的语言表达能力.另一种只拍摄房屋改造过程人不入镜.
+                </p>
+							<p style={{padding:'0 10px',fontSize:'0.8em'}}>2.允许施工期间,拍摄素材的业主.允许在施工期间，拍摄素材并在北京电视台《生活+》栏目播出的业主</p>
 						</Col>
 					</Row>
         </div>
