@@ -62,13 +62,16 @@ class SecondHeaderPart extends Component {
 	        <Link id="casehome" className="menu-item" to={`/details/`}>
 		        装修指南
 	        </Link>
+          <Link id="casehome" className="menu-item" to={`/lifeadd/`}>
+            生活+
+          </Link>
 	        <Link id="casehome" className="menu-item" to={`/about/`}>
 		        关于我们
 	        </Link>
         </Menua>
 
         <Layout id="page-wrap">
-          <Header theme="dark" style={{ background: '#fff', padding: 0,overflow:'hidden',position: 'fixed', width: '100%',zIndex:1, boxShadow:'0 1px #c8c8c8'}}>
+          <Header theme="dark" style={{ background: '#fff', padding: 0,overflow:'hidden',position: 'fixed', width: '100%',zIndex:30, boxShadow:'0 1px #c8c8c8'}}>
             <Row>
               <Col style={{paddingLeft:'24px'}} span={4} onClick={this.reloadPage}>
                 <Icon type="left" />
