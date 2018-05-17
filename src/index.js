@@ -19,6 +19,7 @@ import DegContent from './commpent/deg/DegContent';
 import ComActiveList from './commpent/comactive/ComActiveList';
 import ComActiveContent from './commpent/comactive/ComActiveContent';
 import LifeAddIndex from './commpent/lifeadd/LifeAddIndex';
+import VideoList from './commpent/video/VideoList';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -50,6 +51,8 @@ class Root extends Component{
 						<Route path="/comactivelist/" component={ComActiveList}></Route>
 
 						<Route path="/lifeadd/" component={LifeAddIndex}></Route>
+
+						<Route path="/video/" component={VideoList}></Route>
 					</Switch>
 				</HashRouter>
 			</div>

@@ -204,6 +204,9 @@ class HeaderPart extends Component {
 	        <Link id="casehome" className="menu-item" to={`/threehome/`}>
 		        3D全景
 	        </Link>
+          <Link id="casehome" className="menu-item" to={`/video/`}>
+            视频展示
+          </Link>
 	        <Link id="casehome" className="menu-item" to={`/details/`}>
 		        装修指南
 	        </Link>

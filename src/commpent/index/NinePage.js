@@ -41,7 +41,9 @@ class NinePage extends Component {
 					<Link to={`/threehome/`}>
 						<PartBox text="3D全景" img={three}/>
 					</Link>
-					<PartBox text="工艺展示" img={show}/>
+					<Link to={`/video/`}>
+            <PartBox text="视频展示" img={show}/>
+					</Link>
 					<Link to={`/hothome/`}>
 						<PartBox text="热装小区" img={hot}/>
 					</Link>
