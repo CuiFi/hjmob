@@ -3,7 +3,7 @@ import 'core-js/es6/set';
 import 'raf/polyfill';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import {Route, BrowserRouter,Switch,HashRouter} from 'react-router-dom';
+import {Route, Switch,HashRouter} from 'react-router-dom';
 import App from './App';
 import NewsContent from './commpent/index/NewsContent';
 import HotList from './commpent/hotHome/HotList';

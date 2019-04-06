@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import { Layout,  Icon, Row, Col} from 'antd';
 import { bubble as Menua } from 'react-burger-menu';
-import createHistory from "history/createBrowserHistory";
+// import createHistory from "history/createBrowserHistory";
 const { Header } = Layout;
-const history = createHistory();
+// const history = createHistory();
 
 
 class SecondHeaderPart extends Component {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import {Row,Col,List} from 'antd';
+import {List} from 'antd';
 import SecondHeaderPart from "../index/SecondHeaderPart";
 import Spin from "antd/es/spin/index";
 

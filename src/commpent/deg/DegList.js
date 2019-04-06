@@ -33,6 +33,7 @@ class NormalLoginForm extends Component {
 			levelMark:'',
 			goodstyleMark:'',
 			loadPage:1,
+			degIDSing:0,
 			cityID:localStorage.cityID
 		};
 	}
@@ -57,16 +58,20 @@ class NormalLoginForm extends Component {
 				data: res,
 			});
 		});
-		console.log(this.props.match.url);
+		// console.log(this.props.match.url);
 	}
 
 	// 设置模态框状态,让其显示
 	showModal = (e) => {
+		let degshowid = e.target.getAttribute("degId");
+        // console.log(e.target.getAttribute("degId"));
 		e.preventDefault();
 		this.setState({
+            degIDSing: degshowid,
 			visible: true
 		});
 	}
+
 	// 设置模态框状态,让其隐藏
 	hideModal = (e) => {
 		e.preventDefault();
@@ -77,11 +82,12 @@ class NormalLoginForm extends Component {
 	// 提交表单验证
 	handleSubmit = (e) => {
 		// 阻止默认事件
+		console.log(e);
 		e.preventDefault();
 		// 表单验证提交
 		this.props.form.validateFields((err, values) => {
 			// 传输其他必要数据
-			var otherData = {'cityID':this.state.cityID,'url':this.props.match.url,'orderTypeID':195};
+			var otherData = {'cityID':this.state.cityID,'url':this.props.match.url,'orderTypeID':195,designerID:this.state.degIDSing};
 			var obj = Object.assign(otherData,values);
 			if (!err) {
 				fetch('http://www.hejianzhiyang.com/Api/doOrder', {
@@ -291,7 +297,7 @@ class NormalLoginForm extends Component {
 												</Col>
 												<Col span={5} style={{textAlign:'center'}}>
 													<Icon type="user" /> {item.people}
-													<Button onClick={this.showModal} type="primary" size='small'>预约TA</Button>
+													<Button onClick={this.showModal} type="primary" size='small' degid={item.id}>预约TA</Button>
 												</Col>
 											</Row>
 										</Card>

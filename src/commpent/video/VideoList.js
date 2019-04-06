@@ -133,7 +133,7 @@ class VideoList extends Component {
                     hoverable
                     style={{ width: '100%' }}
                   >
-										{item.way == "video_self" ? <div><Player playsInline poster={"http://www.hejianzhiyang.com/Upload/"+item.imgName_380_209}>
+										{item.way === "video_self" ? <div><Player playsInline poster={"http://www.hejianzhiyang.com/Upload/"+item.imgName_380_209}>
                       <source src={"http://www.hejianzhiyang.com/Upload/"+item.video_self} />
                     </Player></div> : <a href={item.video_path}><img src={"http://www.hejianzhiyang.com/Upload/" + item.imgName_380_209} alt=""/></a>}
 

@@ -18,7 +18,7 @@ class DegContent extends Component {
 		// console.log(this.props.match.params);
 		// console.log(this.props.match.params.id);
 		// console.log(this.props.match);
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&cityID=' + this.state.cityID + '&page=1&limit=4&designerID=' + this.props.match.params.id,myList).then(response => response.json()).then(json => this.setState({itemImg:json}));
+		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&cityID=' + this.state.cityID + '&page=1&limit=100&designerID=' + this.props.match.params.id,myList).then(response => response.json()).then(json => this.setState({itemImg:json}));
 	};
 
 	createMarkup() {

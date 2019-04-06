@@ -31,7 +31,7 @@ class ComActiveList extends Component {
 	};
 
 	render() {
-		const {listText} = this.state;
+		// const {listText} = this.state;
 		return (
       <div>
         <SecondHeaderPart title="生活+" />
