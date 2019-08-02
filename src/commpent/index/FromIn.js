@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import { Form, Icon, Input, Button,notification} from 'antd';
 const FormItem = Form.Item;
 const openNotificationWithIcon = (type) => {
@@ -43,7 +44,7 @@ class NormalLoginForm extends Component {
 	render() {
 		const { getFieldDecorator } = this.props.form;
 		return (
-			<Form onSubmit={this.handleSubmit} className="submit-form">
+			<Form onSubmit={this.handleSubmit} className={"submit-form " + this.props.newClass}>
 				<FormItem>
 					{getFieldDecorator('reName', {
 						rules: [{ required: true, message: '请输入您的姓名!' }],
@@ -65,7 +66,7 @@ class NormalLoginForm extends Component {
 				</FormItem>
 				<FormItem>
 					<Button type="primary" htmlType="submit" style={{width:'100%'}}>
-						预约装修量房
+						{this.props.submit_button}
 					</Button>
 				</FormItem>
 			</Form>
@@ -73,6 +74,12 @@ class NormalLoginForm extends Component {
 	}
 }
 
+NormalLoginForm.defaultProps = {
+	submit_button: '预约装修量房'
+}
+
 const WrappedNormalLoginForm = Form.create()(NormalLoginForm);
+
+
 
 export default WrappedNormalLoginForm;

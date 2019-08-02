@@ -87,6 +87,22 @@ img{
   overflow: auto;
   height: 568px;
 }
+
+/*life*/
+.ok.submit-form{
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #11c7dd;
+}
+.ok.submit-form .ant-btn{
+  background-color: #15171b;
+  border: 1px solid #15171b;
+}
+
+
+
+
+
 @media all and (min-width: 374px){
   .HotList{
     height: 665px;
