@@ -12,7 +12,7 @@ class SixPart extends Component {
 		var myslider = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=quanjing&recommendIndex=1&limit=3&cityID=' + this.state.cityID,myslider).then(response => response.json()).then(json => this.setState({banner:json}));
+		fetch('http://old.hejianzhiyang.com/Api/getDataByType?sheet=quanjing&recommendIndex=1&limit=3&cityID=' + this.state.cityID,myslider).then(response => response.json()).then(json => this.setState({banner:json}));
 	};
 
 
@@ -22,7 +22,7 @@ class SixPart extends Component {
 			? banner.map((bannerItem, index) => (
 				<div key={bannerItem.id}>
 					<a href={bannerItem.link}>
-						<img src={"http://www.hejianzhiyang.com/Upload/"+bannerItem.imgName_380_209} alt={bannerItem.title} />
+						<img src={"http://old.hejianzhiyang.com/Upload/"+bannerItem.imgName_380_209} alt={bannerItem.title} />
 					</a>
 				</div>
 			))

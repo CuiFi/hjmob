@@ -34,7 +34,7 @@ class Footer extends Component {
 		var myList = {
 			method:'GET'
 		};
-		fetch("http://www.hejianzhiyang.com/Api/getDataByType?sheet=slider&recommendIndex1=1&page=1&limit=1" ,myList).then(response => response.json()).then(json => this.setState({bottomImg:json}));
+		fetch("http://old.hejianzhiyang.com/Api/getDataByType?sheet=slider&recommendIndex1=1&page=1&limit=1" ,myList).then(response => response.json()).then(json => this.setState({bottomImg:json}));
 	};
 	render() {
 		const {bottomImg} = this.state;
@@ -55,7 +55,7 @@ class Footer extends Component {
 
 		}
 		const bottomAd = bottomImg
-			? (<a href={bottomImg[0].link}><img src={"http://www.hejianzhiyang.com/Upload/"+bottomImg[0].imgName_750_304_m} alt={bottomImg.title} /></a>)
+			? (<a href={bottomImg[0].link}><img src={"http://old.hejianzhiyang.com/Upload/"+bottomImg[0].imgName_750_304_m} alt={bottomImg.title} /></a>)
 			: '没有加载到任何数据';
 		return (
 			<div className="footer" style={{textAlign:'center'}}>

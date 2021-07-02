@@ -21,7 +21,7 @@ class NormalLoginForm extends Component {
 		var myslider = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=slider&limit=3&cityID=' + this.state.cityID,myslider).then(response => response.json()).then(json => this.setState({banner:json}));
+		fetch('http://old.hejianzhiyang.com/Api/getDataByType?sheet=slider&limit=3&cityID=' + this.state.cityID,myslider).then(response => response.json()).then(json => this.setState({banner:json}));
 	};
 
 	// 设置模态框状态,让其显示
@@ -46,7 +46,7 @@ class NormalLoginForm extends Component {
 			var otherData = {'cityID':this.state.cityID,'url':'/','orderTypeID':195};
 			var obj = Object.assign(otherData,values);
 			if (!err) {
-				fetch('http://www.hejianzhiyang.com/Api/doOrder', {
+				fetch('http://old.hejianzhiyang.com/Api/doOrder', {
 					method: 'POST',
 					mode: 'cors',
 					headers: {
@@ -82,7 +82,7 @@ class NormalLoginForm extends Component {
 		const bannerList = banner.length
 			? banner.map((bannerItem, index) => (
 				<div key={bannerItem.id}>
-					<img src={"http://www.hejianzhiyang.com/Upload/"+bannerItem.imgName_884_359} alt={bannerItem.title} />
+					<img src={"http://old.hejianzhiyang.com/Upload/"+bannerItem.imgName_884_359} alt={bannerItem.title} />
 				</div>
 			))
 			: '没有加载到任何数据';

@@ -14,7 +14,7 @@ class ComActiveList extends Component {
 		var myList = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=daquan&typeID=50&limit=300',myList).then(response => response.json()).then(json => this.setState({listText:json}));
+		fetch('http://old.hejianzhiyang.com/Api/getDataByType?sheet=daquan&typeID=50&limit=300',myList).then(response => response.json()).then(json => this.setState({listText:json}));
 	};
 
 	render() {

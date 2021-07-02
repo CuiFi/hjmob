@@ -29,7 +29,7 @@ class DetailsList extends Component {
 		var myList = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/selectDictionary?datatypeID=49',myList).then(response => response.json()).then(json => this.setState({radiodata:json}));
+		fetch('http://old.hejianzhiyang.com/Api/selectDictionary?datatypeID=49',myList).then(response => response.json()).then(json => this.setState({radiodata:json}));
 
 		// 获取第一页
 		// console.log(this.props.location.query);
@@ -47,7 +47,7 @@ class DetailsList extends Component {
 		var myList = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=daquan&limit=5&typeID=' + quid +'&page='+ this.state.loadPage ,myList).then(response => response.json()).then(json => this.setState({data:json}));
+		fetch('http://old.hejianzhiyang.com/Api/getDataByType?sheet=daquan&limit=5&typeID=' + quid +'&page='+ this.state.loadPage ,myList).then(response => response.json()).then(json => this.setState({data:json}));
 		console.log(`当前请求页数:${this.state.loadPage}`);
 	}
 
@@ -67,7 +67,7 @@ class DetailsList extends Component {
 		var myList = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=daquan&limit=5&typeID=' + this.state.quId + '&page=' + this.state.loadPage ,myList).then(response => response.json()).then(res => callback(res));
+		fetch('http://old.hejianzhiyang.com/Api/getDataByType?sheet=daquan&limit=5&typeID=' + this.state.quId + '&page=' + this.state.loadPage ,myList).then(response => response.json()).then(res => callback(res));
 		console.log(`当前请求页数:${this.state.loadPage}`);
 	}
 
@@ -129,7 +129,7 @@ class DetailsList extends Component {
 									<Link to={`/details/${item.id}`}>
 										<Row gutter={10}>
 											<Col span={9}>
-												<img src={"http://www.hejianzhiyang.com/Upload/"+item.imgName_239_174} alt="img"/>
+												<img src={"http://old.hejianzhiyang.com/Upload/"+item.imgName_239_174} alt="img"/>
 											</Col>
 											<Col span={15}>
 												<h4>{item.title.length > 12 ? item.title.slice(0,12)+'...' : item.title}</h4>

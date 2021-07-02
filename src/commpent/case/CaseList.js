@@ -43,13 +43,13 @@ class NormalLoginForm extends Component {
 		var getoption = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/selectDictionary?datatypeID=15',getoption).then(response => response.json()).then(json => this.setState({housestyle:json}));
+		fetch('http://old.hejianzhiyang.com/Api/selectDictionary?datatypeID=15',getoption).then(response => response.json()).then(json => this.setState({housestyle:json}));
 
 		// 获取下拉选项户型数据
-		fetch('http://www.hejianzhiyang.com/Api/selectDictionary?datatypeID=16',getoption).then(response => response.json()).then(json => this.setState({housetype:json}));
+		fetch('http://old.hejianzhiyang.com/Api/selectDictionary?datatypeID=16',getoption).then(response => response.json()).then(json => this.setState({housetype:json}));
 
 		// 获取下拉选项面积数据
-		fetch('http://www.hejianzhiyang.com/Api/selectDictionary?datatypeID=172',getoption).then(response => response.json()).then(json => this.setState({area:json}));
+		fetch('http://old.hejianzhiyang.com/Api/selectDictionary?datatypeID=172',getoption).then(response => response.json()).then(json => this.setState({area:json}));
 
 
 		this.getData((res) => {
@@ -84,7 +84,7 @@ class NormalLoginForm extends Component {
 			var otherData = {'cityID':this.state.cityID,'url':this.props.match.url,'orderTypeID':195};
 			var obj = Object.assign(otherData,values);
 			if (!err) {
-				fetch('http://www.hejianzhiyang.com/Api/doOrder', {
+				fetch('http://old.hejianzhiyang.com/Api/doOrder', {
 					method: 'POST',
 					mode: 'cors',
 					headers: {
@@ -118,7 +118,7 @@ class NormalLoginForm extends Component {
 		var getoption = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&page=1&limit=5&styleID='+styleId + '&huxingID=' + this.state.houseTypeMark + '&areaID=' + this.state.areaMark + '&cityID=' + this.state.cityID,getoption).then(
+		fetch('http://old.hejianzhiyang.com/Api/getDataByType?sheet=case&page=1&limit=5&styleID='+styleId + '&huxingID=' + this.state.houseTypeMark + '&areaID=' + this.state.areaMark + '&cityID=' + this.state.cityID,getoption).then(
 			response => response.json()
 		).then(json => this.setState({
 			data:json,
@@ -131,7 +131,7 @@ class NormalLoginForm extends Component {
 		var getoption = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&page=1&limit=5&styleID='+this.state.styleMark + '&huxingID=' + huxingId + '&areaID=' + this.state.areaMark + '&cityID=' + this.state.cityID,getoption).then(
+		fetch('http://old.hejianzhiyang.com/Api/getDataByType?sheet=case&page=1&limit=5&styleID='+this.state.styleMark + '&huxingID=' + huxingId + '&areaID=' + this.state.areaMark + '&cityID=' + this.state.cityID,getoption).then(
 			response => response.json()
 		).then(json => this.setState({
 			data:json,
@@ -144,7 +144,7 @@ class NormalLoginForm extends Component {
 		var getoption = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&page=1&limit=5&styleID='+this.state.styleMark + '&huxingID=' + this.state.houseTypeMark + '&areaID=' + areaId + '&cityID=' + this.state.cityID,getoption).then(
+		fetch('http://old.hejianzhiyang.com/Api/getDataByType?sheet=case&page=1&limit=5&styleID='+this.state.styleMark + '&huxingID=' + this.state.houseTypeMark + '&areaID=' + areaId + '&cityID=' + this.state.cityID,getoption).then(
 			response => response.json()
 		).then(json => this.setState({
 			data:json,
@@ -182,7 +182,7 @@ class NormalLoginForm extends Component {
 		var myList = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&page='+ this.state.loadPage +'&limit=5&styleID='+this.state.styleMark + '&huxingID=' + this.state.houseTypeMark + '&areaID=' + this.state.areaMark + '&cityID=' + this.state.cityID ,myList).then(response => response.json()).then(res => callback(res));
+		fetch('http://old.hejianzhiyang.com/Api/getDataByType?sheet=case&page='+ this.state.loadPage +'&limit=5&styleID='+this.state.styleMark + '&huxingID=' + this.state.houseTypeMark + '&areaID=' + this.state.areaMark + '&cityID=' + this.state.cityID ,myList).then(response => response.json()).then(res => callback(res));
 		console.log(`当前请求页数:${this.state.loadPage}`);
 	}
 	handleInfiniteOnLoad = () => {
@@ -280,11 +280,11 @@ class NormalLoginForm extends Component {
 										<Card
 											hoverable
 											style={{ width: '100%' }}
-											cover={<img alt="example" src={"http://www.hejianzhiyang.com/Upload/"+item.imgName_380_209} />}
+											cover={<img alt="example" src={"http://old.hejianzhiyang.com/Upload/"+item.imgName_380_209} />}
 										>
 											<Row align="middle" type="flex">
 												<Col span={4}>
-													<Avatar style={{verticalAlign:'middle'}} size="large" icon="user" src={"http://www.hejianzhiyang.com/Upload/"+item.designer_img_50_50}/>
+													<Avatar style={{verticalAlign:'middle'}} size="large" icon="user" src={"http://old.hejianzhiyang.com/Upload/"+item.designer_img_50_50}/>
 												</Col>
 												<Col span={15}>
 													<h3>{item.title.slice(0,11)+'...'}</h3>

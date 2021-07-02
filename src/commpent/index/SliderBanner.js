@@ -14,7 +14,7 @@ class SliderBanner extends Component {
 		var myslider = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=slider&page=1&limit=10&recommendIndex=1&cityID=' + this.state.cityID,myslider).then(response => response.json()).then(json => this.setState({banner:json}));
+		fetch('http://old.hejianzhiyang.com/Api/getDataByType?sheet=slider&page=1&limit=10&recommendIndex=1&cityID=' + this.state.cityID,myslider).then(response => response.json()).then(json => this.setState({banner:json}));
 	};
 
 
@@ -24,7 +24,7 @@ class SliderBanner extends Component {
 			? banner.map((bannerItem, index) => (
         <div key={bannerItem.id}>
 	        <a href={bannerItem.link}>
-		        <img src={"http://www.hejianzhiyang.com/Upload/"+bannerItem.imgName_884_359} alt={bannerItem.title} />
+		        <img src={"http://old.hejianzhiyang.com/Upload/"+bannerItem.imgName_884_359} alt={bannerItem.title} />
 	        </a>
         </div>
 			))

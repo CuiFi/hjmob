@@ -20,7 +20,7 @@ class NormalLoginForm extends Component {
 		var mylist = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&limit=4&cityID=' + this.state.cityID,mylist).then(response => response.json()).then(json => this.setState({itemImg:json}));
+		fetch('http://old.hejianzhiyang.com/Api/getDataByType?sheet=case&limit=4&cityID=' + this.state.cityID,mylist).then(response => response.json()).then(json => this.setState({itemImg:json}));
 	};
 	// 设置模态框状态,让其显示
 	showModal = () => {
@@ -44,7 +44,7 @@ class NormalLoginForm extends Component {
 			var otherData = {'cityID':this.state.cityID,'url':'/','orderTypeID':195};
 			var obj = Object.assign(otherData,values);
 			if (!err) {
-				fetch('http://www.hejianzhiyang.com/Api/doOrder', {
+				fetch('http://old.hejianzhiyang.com/Api/doOrder', {
 					method: 'POST',
 					mode: 'cors',
 					headers: {
@@ -82,7 +82,7 @@ class NormalLoginForm extends Component {
 					<Link to={`/casehome/${imgItem.id}`}>
 						<Card
 							hoverable
-							cover={<img alt={imgItem.title} src={"http://www.hejianzhiyang.com/Upload/"+imgItem.imgName_438_348_m} />}
+							cover={<img alt={imgItem.title} src={"http://old.hejianzhiyang.com/Upload/"+imgItem.imgName_438_348_m} />}
 						>
 						</Card>
 					</Link>

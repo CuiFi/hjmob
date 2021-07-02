@@ -14,11 +14,11 @@ class ComActiveContent extends Component {
 		var myList = {
 			method:'GET'
 		};
-		fetch("http://www.hejianzhiyang.com/Api/getDataByid?sheet=daquan&id=" + this.props.match.params.id ,myList)
+		fetch("http://old.hejianzhiyang.com/Api/getDataByid?sheet=daquan&id=" + this.props.match.params.id ,myList)
 			.then(response => response.json())
 			.then(json => this.setState({listText:json}));
 
-    fetch("http://www.hejianzhiyang.com/Api/prevnext?sheet=daquan&id=" + this.props.match.params.id ,myList)
+    fetch("http://old.hejianzhiyang.com/Api/prevnext?sheet=daquan&id=" + this.props.match.params.id ,myList)
       .then(response => response.json())
       .then(json => this.setState({PropNextText:json}));
 
@@ -32,11 +32,11 @@ class ComActiveContent extends Component {
       method:'GET'
     };
     // 请求下一页
-    fetch("http://www.hejianzhiyang.com/Api/getDataByid?sheet=daquan&id=" + nextID ,myList)
+    fetch("http://old.hejianzhiyang.com/Api/getDataByid?sheet=daquan&id=" + nextID ,myList)
       .then(response => response.json())
       .then(json => this.setState({listText:json}));
     // 请求下一页的上下页
-    fetch("http://www.hejianzhiyang.com/Api/prevnext?sheet=daquan&id=" + nextID ,myList)
+    fetch("http://old.hejianzhiyang.com/Api/prevnext?sheet=daquan&id=" + nextID ,myList)
       .then(response => response.json())
       .then(json => this.setState({PropNextText:json}));
 	}
@@ -45,10 +45,10 @@ class ComActiveContent extends Component {
     var myList = {
       method:'GET'
     };
-    fetch("http://www.hejianzhiyang.com/Api/getDataByid?sheet=daquan&id=" + prevID ,myList)
+    fetch("http://old.hejianzhiyang.com/Api/getDataByid?sheet=daquan&id=" + prevID ,myList)
       .then(response => response.json())
       .then(json => this.setState({listText:json}));
-    fetch("http://www.hejianzhiyang.com/Api/prevnext?sheet=daquan&id=" + prevID ,myList)
+    fetch("http://old.hejianzhiyang.com/Api/prevnext?sheet=daquan&id=" + prevID ,myList)
       .then(response => response.json())
       .then(json => this.setState({PropNextText:json}));
 

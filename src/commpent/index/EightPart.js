@@ -21,7 +21,7 @@ class NormalLoginForm extends Component {
 		var mylist = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=build&recommendIndex=1&limit=4&cityID=' + this.state.cityID,mylist).then(response => response.json()).then(json => this.setState({hotdata:json}));
+		fetch('http://old.hejianzhiyang.com/Api/getDataByType?sheet=build&recommendIndex=1&limit=4&cityID=' + this.state.cityID,mylist).then(response => response.json()).then(json => this.setState({hotdata:json}));
 	};
 
 	// 设置模态框状态,让其显示
@@ -46,7 +46,7 @@ class NormalLoginForm extends Component {
 			var otherData = {'cityID':this.state.cityID,'url':'/','orderTypeID':195};
 			var obj = Object.assign(otherData,values);
 			if (!err) {
-				fetch('http://www.hejianzhiyang.com/Api/doOrder', {
+				fetch('http://old.hejianzhiyang.com/Api/doOrder', {
 					method: 'POST',
 					mode: 'cors',
 					headers: {
@@ -85,7 +85,7 @@ class NormalLoginForm extends Component {
 					<Link to={{pathname:`/hothome/${imgItem.id}/list/`}}>
 						<Card
 							style={{ width: '100%' }}
-							cover={<img alt={imgItem.name} src={"http://www.hejianzhiyang.com/Upload/"+imgItem.imgName_348_238} />}
+							cover={<img alt={imgItem.name} src={"http://old.hejianzhiyang.com/Upload/"+imgItem.imgName_348_238} />}
 						>
 							<Row>
 								<Col style={{textAlign:'left'}} span={18}>

@@ -25,22 +25,22 @@ const data = [
 	{
 		title: 'Ant Design Title 1',
 		imgUrl: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-		videoUrl: 'http://www.hejianzhiyang.com/Upload/Video/20180410/5acc8d6cf0a9b1.mp4',
+		videoUrl: 'http://old.hejianzhiyang.com/Upload/Video/20180410/5acc8d6cf0a9b1.mp4',
 	},
 	{
 		title: 'Ant Design Title 2',
 		imgUrl: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-		videoUrl: 'http://www.hejianzhiyang.com/Upload/Video/20180410/5acc8d6cf0a9b2.mp4',
+		videoUrl: 'http://old.hejianzhiyang.com/Upload/Video/20180410/5acc8d6cf0a9b2.mp4',
 	},
 	{
 		title: 'Ant Design Title 3',
 		imgUrl: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-		videoUrl: 'http://www.hejianzhiyang.com/Upload/Video/20180410/5acc8d6cf0a9b3.mp4',
+		videoUrl: 'http://old.hejianzhiyang.com/Upload/Video/20180410/5acc8d6cf0a9b3.mp4',
 	},
 	{
 		title: 'Ant Design Title 4',
 		imgUrl: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-		videoUrl: 'http://www.hejianzhiyang.com/Upload/Video/20180410/5acc8d6cf0a9b.mp4',
+		videoUrl: 'http://old.hejianzhiyang.com/Upload/Video/20180410/5acc8d6cf0a9b.mp4',
 	},
 ];
 
@@ -56,7 +56,7 @@ class ComActiveList extends Component {
 		let myList = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=daquan&typeID=50&limit=300',myList).then(response => response.json()).then(json => this.setState({listText:json}));
+		fetch('http://old.hejianzhiyang.com/Api/getDataByType?sheet=daquan&typeID=50&limit=300',myList).then(response => response.json()).then(json => this.setState({listText:json}));
 	};
 
 
@@ -98,7 +98,7 @@ class ComActiveList extends Component {
             <Player
               playsInline
               poster={posterImg}
-              src="http://www.hejianzhiyang.com/Upload/Video/20180410/5acc8d6cf0a9b.mp4"
+              src="http://old.hejianzhiyang.com/Upload/Video/20180410/5acc8d6cf0a9b.mp4"
             />
 					</Col>
 				</Row>

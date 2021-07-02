@@ -30,7 +30,7 @@ class VideoList extends Component {
 		var myList = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/video_type',myList).then(response => response.json()).then(json => this.setState({radiodata:json}));
+		fetch('http://old.hejianzhiyang.com/Api/video_type',myList).then(response => response.json()).then(json => this.setState({radiodata:json}));
 
 		// 获取第一页
 		// console.log(this.props.location.query);
@@ -48,7 +48,7 @@ class VideoList extends Component {
 		var myList = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=video&typeID=' + VideoId + '&page=' + this.state.loadPage ,myList).then(response => response.json()).then(json => this.setState({data:json,hasMore:true}));
+		fetch('http://old.hejianzhiyang.com/Api/getDataByType?sheet=video&typeID=' + VideoId + '&page=' + this.state.loadPage ,myList).then(response => response.json()).then(json => this.setState({data:json,hasMore:true}));
 		// console.log(`当前请求页数:${this.state.loadPage}`);
 	}
 
@@ -68,7 +68,7 @@ class VideoList extends Component {
 		var myList = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=video&typeID=' + this.state.VideoId + '&page=' + this.state.loadPage ,myList).then(response => response.json()).then(res => callback(res));
+		fetch('http://old.hejianzhiyang.com/Api/getDataByType?sheet=video&typeID=' + this.state.VideoId + '&page=' + this.state.loadPage ,myList).then(response => response.json()).then(res => callback(res));
 		// console.log(`当前请求页数:${this.state.loadPage}`);
 	}
 
@@ -133,9 +133,9 @@ class VideoList extends Component {
                     hoverable
                     style={{ width: '100%' }}
                   >
-										{item.way === "video_self" ? <div><Player playsInline poster={"http://www.hejianzhiyang.com/Upload/"+item.imgName_380_209}>
-                      <source src={"http://www.hejianzhiyang.com/Upload/"+item.video_self} />
-                    </Player></div> : <a href={item.video_path}><img src={"http://www.hejianzhiyang.com/Upload/" + item.imgName_380_209} alt=""/></a>}
+										{item.way === "video_self" ? <div><Player playsInline poster={"http://old.hejianzhiyang.com/Upload/"+item.imgName_380_209}>
+                      <source src={"http://old.hejianzhiyang.com/Upload/"+item.video_self} />
+                    </Player></div> : <a href={item.video_path}><img src={"http://old.hejianzhiyang.com/Upload/" + item.imgName_380_209} alt=""/></a>}
 
                     <Row align="middle" type="flex">
                       <Col span={16}>

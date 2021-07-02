@@ -33,7 +33,7 @@ class ThreeList extends Component {
 		var myList = {
 			method:'GET'
 		};
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=quanjing&limit=5&page='+ this.state.loadPage + '&cityID=' + this.state.cityID ,myList).then(response => response.json()).then(res => callback(res));
+		fetch('http://old.hejianzhiyang.com/Api/getDataByType?sheet=quanjing&limit=5&page='+ this.state.loadPage + '&cityID=' + this.state.cityID ,myList).then(response => response.json()).then(res => callback(res));
 	}
 
 	handleInfiniteOnLoad = () => {
@@ -80,7 +80,7 @@ class ThreeList extends Component {
 										<Card
 											hoverable
 											style={{ width: '100%' }}
-											cover={<img alt="example" src={"http://www.hejianzhiyang.com/Upload/"+item.imgName_380_209} />}
+											cover={<img alt="example" src={"http://old.hejianzhiyang.com/Upload/"+item.imgName_380_209} />}
 										>
 											<Row align="middle" type="flex">
 												<Col span={20}>

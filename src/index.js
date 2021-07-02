@@ -3,7 +3,7 @@ import 'core-js/es6/set';
 import 'raf/polyfill';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import {Route, Switch,HashRouter} from 'react-router-dom';
+import {Route, Switch,HashRouter,BrowserRouter } from 'react-router-dom';
 import App from './App';
 import NewsContent from './commpent/index/NewsContent';
 import HotList from './commpent/hotHome/HotList';
@@ -27,7 +27,7 @@ class Root extends Component{
 	render(){
 		return(
 			<div>
-				<HashRouter>
+				<BrowserRouter>
 					<Switch>
 						<Route exact path="/" component={App}></Route>
 						<Route path="/details/:id" component={NewsContent}></Route>
@@ -54,7 +54,7 @@ class Root extends Component{
 
 						<Route path="/video/" component={VideoList}></Route>
 					</Switch>
-				</HashRouter>
+				</BrowserRouter>
 			</div>
 		)
 	}

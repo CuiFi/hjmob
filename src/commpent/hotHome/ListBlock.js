@@ -13,7 +13,7 @@ class ListBlock extends Component {
 		var myList = {
 			method:'GET'
 		};
-		fetch("http://www.hejianzhiyang.com/Api/getDataByType?type=daquan&limit=" ,myList).then(response => response.json()).then(json => this.setState({HotList:json}));
+		fetch("http://old.hejianzhiyang.com/Api/getDataByType?type=daquan&limit=" ,myList).then(response => response.json()).then(json => this.setState({HotList:json}));
 	};
 
 	render() {
@@ -29,7 +29,7 @@ class ListBlock extends Component {
 								<Card
 									hoverable
 									style={{ width: '100%' }}
-									cover={<img alt="example" src={"http://www.hejianzhiyang.com/Upload/"+item.imgName_239_174} />}
+									cover={<img alt="example" src={"http://old.hejianzhiyang.com/Upload/"+item.imgName_239_174} />}
 								>
 									<Row align="middle" type="flex">
 										<Col span={20}>

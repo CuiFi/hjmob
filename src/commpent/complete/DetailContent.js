@@ -12,7 +12,7 @@ class DetailContent extends Component {
 		var myList = {
 			method:'GET'
 		};
-		fetch("http://www.hejianzhiyang.com/Api/getDataByid?sheet=case&id=" + this.props.match.params.id ,myList).then(response => response.json()).then(json => this.setState({listText:json}));
+		fetch("http://old.hejianzhiyang.com/Api/getDataByid?sheet=case&id=" + this.props.match.params.id ,myList).then(response => response.json()).then(json => this.setState({listText:json}));
 		// console.log(this.props.match.url);
 		// console.log(this.props.match.params);
 		// console.log(this.props.match.params.id);

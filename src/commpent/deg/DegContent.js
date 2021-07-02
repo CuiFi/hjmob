@@ -13,12 +13,12 @@ class DegContent extends Component {
 		var myList = {
 			method:'GET'
 		};
-		fetch("http://www.hejianzhiyang.com/Api/getDataByid?sheet=designer&id=" + this.props.match.params.id ,myList).then(response => response.json()).then(json => this.setState({listText:json}));
+		fetch("http://old.hejianzhiyang.com/Api/getDataByid?sheet=designer&id=" + this.props.match.params.id ,myList).then(response => response.json()).then(json => this.setState({listText:json}));
 		// console.log(this.props.match.url);
 		// console.log(this.props.match.params);
 		// console.log(this.props.match.params.id);
 		// console.log(this.props.match);
-		fetch('http://www.hejianzhiyang.com/Api/getDataByType?sheet=case&cityID=' + this.state.cityID + '&page=1&limit=100&designerID=' + this.props.match.params.id,myList).then(response => response.json()).then(json => this.setState({itemImg:json}));
+		fetch('http://old.hejianzhiyang.com/Api/getDataByType?sheet=case&cityID=' + this.state.cityID + '&page=1&limit=100&designerID=' + this.props.match.params.id,myList).then(response => response.json()).then(json => this.setState({itemImg:json}));
 	};
 
 	createMarkup() {
@@ -34,7 +34,7 @@ class DegContent extends Component {
 					<Link to={`/casehome/${imgItem.id}`}>
 						<Card
 							hoverable
-							cover={<img alt={imgItem.title} src={"http://www.hejianzhiyang.com/Upload/"+imgItem.imgName_438_348_m} />}
+							cover={<img alt={imgItem.title} src={"http://old.hejianzhiyang.com/Upload/"+imgItem.imgName_438_348_m} />}
 						>
 							<h5>{imgItem.buildName+" | "+imgItem.styleName}</h5>
 						</Card>
@@ -46,7 +46,7 @@ class DegContent extends Component {
 			<div>
 				<SecondHeaderPart title={listText.name}/>
 				<div style={{paddingLeft:'10px',paddingRight:'10px',paddingTop:'70px'}}>
-					<img src={"http://www.hejianzhiyang.com/Upload/" + listText.imgName_500_500} alt={listText.name}/>
+					<img src={"http://old.hejianzhiyang.com/Upload/" + listText.imgName_500_500} alt={listText.name}/>
 					<h2 style={{textAlign:'center',marginBottom:'5px',marginTop:'5px'}}>{listText.name}</h2>
 					<h3 style={{textAlign:'center'}}>{listText.deptName} 从业{listText.years}年</h3>
 					<h3>擅长风格:</h3>
